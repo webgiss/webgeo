@@ -1,0 +1,9 @@
+.mainPage {
+    background: rgb(238, 237, 228);
+    position: fixed;
+    top:2px;
+    bottom:2px;
+    left:2px;
+    right: 2px;
+}
+
