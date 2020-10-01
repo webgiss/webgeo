@@ -6,7 +6,12 @@ import '../main.css';
 // console.log({MainPage})
 
 export default () => {
-    return <Router>
+    let basename=undefined
+    const base=document.querySelector('base')
+    if (base) {
+        basename=base.getAttribute('href')
+    }
+    return <Router basename={basename}>
         <Switch>
             <Route exact path='/' component={MainPage} />
         </Switch>
