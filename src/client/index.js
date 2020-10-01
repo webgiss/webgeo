@@ -35,6 +35,3 @@ if (module.hot) {
 }
 
 window.config = configDao.config;
-if (configDao.config.useDebug) {
-    window.reactReduxInit = reactReduxInit;
-}

@@ -17,7 +17,6 @@ import { ConnectedRouter } from 'connected-react-router'
  * @template State
  */
 export default (store, history, rootElement, Routes) => {
-    console.log('init view', {store, history, rootElement, Routes})
     ReactDOM.render(
         <Provider store={store}>
             <ConnectedRouter history={history}>
