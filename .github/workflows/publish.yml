@@ -21,8 +21,8 @@ jobs:
       - name: Build with yarn
         run: yarn build
 
-      - name: Run tests with yarn
-        run: yarn test
+      # - name: Run tests with yarn
+      #   run: yarn test
 
       - name: Create dist
         if: success()
