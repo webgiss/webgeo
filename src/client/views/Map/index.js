@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import Map from './Map'
 
 const mapStateToProps = (state) => {
-    const { lat, lon, nlat, nlon, zoom, style, marks, address, useMilliGraticule } = state.geomap;
+    const { lat, lon, nlat, nlon, zoom, style, marks, address, addrcoord, useMilliGraticule } = state.geomap;
     return {
-        lat, lon, nlat, nlon, zoom, style, address,
+        lat, lon, nlat, nlon, zoom, style, address, addrcoord,
         marks: useMilliGraticule ? marks : null,
     };
 }

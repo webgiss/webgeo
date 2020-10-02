@@ -1,5 +1,5 @@
 import React, { createRef } from 'react';
-import { Map as LeafMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map as LeafMap, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
 import mapData from '../mapData'
 
 import './Map.css';
@@ -10,7 +10,7 @@ const lastImpose = {
     time: null,
 }
 
-const Map = ({ lat, lon, nlat, nlon, zoom, style, onCenter, onZoom, marks, address, onNeedAddress, onPopupStatusChanged }) => {
+const Map = ({ lat, lon, nlat, nlon, zoom, style, onCenter, onZoom, marks, address, addrcoord, onNeedAddress, onPopupStatusChanged }) => {
     const position = [lat, lon]
     const mapRef = createRef();
 
@@ -91,6 +91,11 @@ const Map = ({ lat, lon, nlat, nlon, zoom, style, onCenter, onZoom, marks, addre
                     attribution={attribution}
                     url={url}
                 />
+                {
+                    addrcoord ?
+                    <Circle center={addrcoord} color='#ff3322' radius={2} ></Circle>
+                    : null
+                }
                 <Marker position={position} onPopupOpen={onPopupOpen} onPopupClose={onPopupClose}>
                     <Popup>
                         Lat: {nlat}
