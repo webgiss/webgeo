@@ -1,0 +1,18 @@
+// in file 'Code/User/snippets/javascript.json'
+{
+    "it should": {
+        "prefix": ["it", "it-should","test-it"],
+        "body": ["it(`should ${1:text}`, async () => {", "\t${2:}", "})"],
+        "description": "A 'it' test."
+    },
+    "test": {
+        "prefix": ["test-test"],
+        "body": ["test(`${1:text}`, async () => {", "\t${2:}", "})"],
+        "description": "A 'it' test."
+    },
+    "describe": {
+        "prefix": ["describe", "test-describe"],
+        "body": ["describe(`${1:text}`, () => {", "\t${2:}", "})"],
+        "description": "A 'describe' test."
+    }
+}

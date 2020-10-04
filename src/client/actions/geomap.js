@@ -9,7 +9,6 @@ export const setPopupStatus = (popupStatus) => ({type: SET_POPUP_STATUS, popupSt
 export const needAddress = (lat, lon) => async (dispatch, getState) => {
     dispatch({ type: NEED_ADDRESS_START, lat, lon });
     try {
-        let address = null;
         const response = await fetch(`https://api-adresse.data.gouv.fr/reverse/?lon=${lon}&lat=${lat}`);
         const text = await response.text();
         if (text) {
