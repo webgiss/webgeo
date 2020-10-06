@@ -1,5 +1,6 @@
 import configDao from '../dao/config';
 import { MD5, SHA256 } from 'crypto-js'
+import mapData from '../views/mapData'
 
 const initialState = {};
 
@@ -8,6 +9,7 @@ export default (state, action) => {
 
     if (configDao.config.useDebug) {
         console.log('action: [' + action.type + ']', action);
+        window.mapData = mapData
         window.MD5 = MD5
         window.SHA256 = SHA256
         window.formatDate = (day,month,year) => new Date(`${month} ${day} ${year} Z`).toISOString().substring(0,10)
