@@ -18,13 +18,15 @@ const getLatLonText = (value, directionArray) => {
     return `${valueDeg}° ${valueMin}' ${valueSec}" ${directionArray[indexSign]}`
 }
 
+const normalizeLatLon = (x) => Math.floor(x * 1000000) / 1000000;
+
 const impactLatLonChange = (state) => {
     let { lat, lon } = state;
-    [lat, lon] = [lat, lon].map((x) => Math.floor(x * markResolution) / markResolution)
     const nlat = normalizeLatLon(lat)
     const nlon = normalizeLatLon(lon)
-    const latText = getLatLonText(lat, ['N', 'S'])
-    const lonText = getLatLonText(lon, ['E', 'W'])
+    const latText = getLatLonText(lat, ['N', 'S']);
+    const lonText = getLatLonText(lon, ['E', 'W']);
+    [lat, lon] = [lat, lon].map((x) => Math.floor(x * markResolution) / markResolution)
     const marks = [
         { lat, lon },
         { lat: lat + 1 / markResolution, lon },
@@ -33,8 +35,6 @@ const impactLatLonChange = (state) => {
     ]
     return { ...state, nlat, nlon, latText, lonText, marks };
 }
-
-const normalizeLatLon = (x) => Math.floor(x * 1000000) / 1000000;
 
 const initialState = impactLatLonChange({
     lat: 48.87,

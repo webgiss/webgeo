@@ -19,7 +19,9 @@ describe(`geomap reducer`, () => {
         expect(
             Object.keys(geomap(null, { type: '' }))
         ).toEqual([
-            'lat', 'lon', 'zoom', 'style', 'address', 'addrcoord', 'marks', 'addresses', 'useMilliGraticule', 'popupStatus'
+            'lat', 'lon', 'zoom', 'style', 'address', 'addrcoord',
+            'marks', 'addresses', 'useMilliGraticule', 'popupStatus',
+            'nlat', 'nlon', 'latText', 'lonText',
         ])
     )
     describe(`SET_COORD action`, () => {
@@ -55,6 +57,8 @@ describe(`geomap reducer`, () => {
                     ],
                     nlat: 0.521319,
                     nlon: -0.987655,
+                    latText: '0° 31\' 16.74" N',
+                    lonText: '0° 59\' 15.55" W',
                     addresses: [],
                     useMilliGraticule: false,
                     popupStatus: false,
@@ -107,6 +111,8 @@ describe(`geomap reducer`, () => {
                     ],
                     nlat: 0.521319,
                     nlon: -0.987655,
+                    "latText": "0° 31' 16.74\" N",
+                    "lonText": "0° 59' 15.55\" W",
                     addresses,
                     useMilliGraticule: false,
                     popupStatus: false,
@@ -178,6 +184,8 @@ describe(`geomap reducer`, () => {
                 lon: 2.363348007202149,
                 nlat: 48.856583,
                 nlon: 2.363348,
+                latText: "48° 51' 23.7\" N",
+                lonText: "2° 21' 48.05\" E",
                 zoom: 12,
                 style: 'grut',
                 address: null,
@@ -250,6 +258,9 @@ describe(`geomap reducer`, () => {
                 lat: 48.8565834593617,
                 lon: 0.7,
                 nlat: 48.856583,
+                nlon: 0.7,
+                latText: "48° 51' 23.7\" N",
+                lonText: "0° 42' 0\" E",
                 zoom: 4,
                 style: 'fancy',
                 address: null,
@@ -282,7 +293,10 @@ describe(`geomap reducer`, () => {
             expect(state).toEqual({
                 lat: 0.5,
                 lon: 2.363348007202149,
+                nlat: 0.5,
                 nlon: 2.363348,
+                latText: "0° 30' 0\" N",
+                lonText: "2° 21' 48.05\" E",
                 zoom: 4,
                 style: 'fancy',
                 address: null,
