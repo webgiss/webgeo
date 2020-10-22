@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import ControlPanel from './ControlPanel'
 
 const mapStateToProps = (state) => {
-    const {lat, lon, zoom} = state.geomap;
+    const { lat, lon, latText, lonText, zoom } = state.geomap;
     return {
-        lat, lon, zoom
+        lat, lon, latText, lonText, zoom
     };
 }
 

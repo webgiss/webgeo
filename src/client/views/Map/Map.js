@@ -10,7 +10,7 @@ const lastImpose = {
     time: null,
 }
 
-const Map = ({ lat, lon, nlat, nlon, zoom, style, onCenter, onZoom, marks, address, addrcoord, onNeedAddress, onPopupStatusChanged }) => {
+const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, onCenter, onZoom, marks, address, addrcoord, onNeedAddress, onPopupStatusChanged }) => {
     const position = [lat, lon]
     const mapRef = createRef();
 
@@ -98,9 +98,9 @@ const Map = ({ lat, lon, nlat, nlon, zoom, style, onCenter, onZoom, marks, addre
                 }
                 <Marker position={position} onPopupOpen={onPopupOpen} onPopupClose={onPopupClose}>
                     <Popup>
-                        Lat: {nlat}
+                        Lat: {nlat} ({latText})
                         <br />
-                        Lon: {nlon}
+                        Lon: {nlon} ({lonText})
                         <br />
                         {addressToDisplay}
                     </Popup>

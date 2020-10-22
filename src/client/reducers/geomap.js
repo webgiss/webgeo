@@ -4,21 +4,39 @@ import { createReducer, createLocationChangeReducer } from "./utils/createReduce
 
 const markResolution = 1000;
 
-const createMarks = (state) => {
+const getLatLonText = (value, directionArray) => {
+    let indexSign = 0
+    if (value < 0) {
+        indexSign = 1
+        value = -value
+    }
+    let valueDeg = Math.floor(value)
+    value = (value - valueDeg) * 60
+    let valueMin = Math.floor(value)
+    value = (value - valueMin) * 60
+    let valueSec = Math.floor(value * 100) / 100
+    return `${valueDeg}° ${valueMin}' ${valueSec}" ${directionArray[indexSign]}`
+}
+
+const impactLatLonChange = (state) => {
     let { lat, lon } = state;
     [lat, lon] = [lat, lon].map((x) => Math.floor(x * markResolution) / markResolution)
+    const nlat = normalizeLatLon(lat)
+    const nlon = normalizeLatLon(lon)
+    const latText = getLatLonText(lat, ['N', 'S'])
+    const lonText = getLatLonText(lon, ['E', 'W'])
     const marks = [
         { lat, lon },
         { lat: lat + 1 / markResolution, lon },
         { lat, lon: lon + 1 / markResolution },
         { lat: lat + 1 / markResolution, lon: lon + 1 / markResolution },
     ]
-    return { ...state, marks };
+    return { ...state, nlat, nlon, latText, lonText, marks };
 }
 
 const normalizeLatLon = (x) => Math.floor(x * 1000000) / 1000000;
 
-const initialState = createMarks({
+const initialState = impactLatLonChange({
     lat: 48.87,
     lon: 2.33,
     zoom: 15,
@@ -83,16 +101,14 @@ export default createReducer({
                 }
             }
             if (!isNaN(lat)) {
-                const nlat = normalizeLatLon(lat)
-                if (lat !== state.lat || nlat !== state.nlat) {
-                    state = createMarks({ ...state, lat, nlat, address: null });
+                if (lat !== state.lat) {
+                    state = impactLatLonChange({ ...state, lat, address: null });
                     posChanged = true
                 }
             }
             if (!isNaN(lon)) {
-                const nlon = normalizeLatLon(lon)
-                if (lon !== state.lon || nlon !== state.nlon) {
-                    state = createMarks({ ...state, lon, nlon, address: null });
+                if (lon !== state.lon) {
+                    state = impactLatLonChange({ ...state, lon, address: null });
                     posChanged = true
                 }
             }
@@ -114,11 +130,8 @@ export default createReducer({
     }),
     [SET_COORD]: (state, action) => {
         let { lat, lon } = action;
-        const nlat = normalizeLatLon(lat)
-        const nlon = normalizeLatLon(lon)
         const { address, addrcoord } = findAddress(state, lat, lon)
-        state = { ...state, lat, lon, nlat, nlon, address, addrcoord }
-        return createMarks(state);
+        return impactLatLonChange({ ...state, lat, lon, address, addrcoord });
     },
     [SET_ZOOM]: (state, action) => {
         const { zoom } = action;

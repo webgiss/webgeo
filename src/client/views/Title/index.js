@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import Title from './Title'
 
 const mapStateToProps = (state) => {
-    const { nlat, nlon, address } = state.geomap;
+    const { nlat, nlon, latText, lonText, address } = state.geomap;
     return {
-        nlat, nlon, address
+        nlat, nlon, latText, lonText, address
     };
 }
 
