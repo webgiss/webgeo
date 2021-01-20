@@ -19,7 +19,7 @@ describe(`geomap reducer`, () => {
         expect(
             Object.keys(geomap(null, { type: '' }))
         ).toEqual([
-            'lat', 'lon', 'zoom', 'style', 'address', 'addrcoord',
+            'lat', 'lon', 'zoom', 'geohash', 'style', 'address', 'addrcoord',
             'marks', 'addresses', 'useMilliGraticule', 'popupStatus',
             'nlat', 'nlon', 'latText', 'lonText',
         ])
@@ -34,6 +34,7 @@ describe(`geomap reducer`, () => {
                     lat: 0.52131921,
                     lon: -0.98765431,
                     zoom: 4,
+                    geohash: 'ebp6cwbucuzw',
                     style: 'fancy',
                     address: null,
                     addrcoord: null,
@@ -88,6 +89,7 @@ describe(`geomap reducer`, () => {
                     lat: 0.52131921,
                     lon: -0.98765431,
                     zoom: 4,
+                    "geohash": "ebp6cwbucuzw",
                     style: 'fancy',
                     address: "This is an address",
                     addrcoord: [0.5214, -0.9879],
@@ -187,6 +189,8 @@ describe(`geomap reducer`, () => {
                 latText: "48° 51' 23.7\" N",
                 lonText: "2° 21' 48.05\" E",
                 zoom: 12,
+                geohash: 'u09tvy0fnp20',
+                urlFormat: 'map',
                 style: 'grut',
                 address: null,
                 addrcoord: null,
@@ -244,6 +248,7 @@ describe(`geomap reducer`, () => {
                 lon: 0.7,
                 zoom: 15,
                 style: 'fancy',
+                urlFormat: 'map',
                 address: null,
                 addrcoord: null,
                 marks: [],
@@ -262,6 +267,8 @@ describe(`geomap reducer`, () => {
                 latText: "48° 51' 23.7\" N",
                 lonText: "0° 42' 0\" E",
                 zoom: 4,
+                geohash: 'u08mzyjdppmb',
+                urlFormat: 'map',
                 style: 'fancy',
                 address: null,
                 addrcoord: null,
@@ -298,6 +305,8 @@ describe(`geomap reducer`, () => {
                 latText: "0° 30' 0\" N",
                 lonText: "2° 21' 48.05\" E",
                 zoom: 4,
+                geohash: 's01dvg0bwnb0',
+                urlFormat: 'map',
                 style: 'fancy',
                 address: null,
                 addrcoord: null,
@@ -318,6 +327,44 @@ describe(`geomap reducer`, () => {
                         lat: 0.501,
                         lon: 2.364,
                     },
+                ],
+                addresses: [],
+                useMilliGraticule: false,
+                popupStatus: false,
+            })
+        })
+        it(`should change lat and lon with geohash`, async () => {
+            const state = geomap(dummyState, getAction('#geohash=u09tvy0fnp20'))
+            expect(state).toEqual({
+                lat: 48.85658347,
+                lon: 2.36334817,
+                nlat: 48.856583,
+                nlon: 2.363348,
+                latText: "48° 51' 23.7\" N",
+                lonText: "2° 21' 48.05\" E",
+                zoom: 4,
+                geohash: 'u09tvy0fnp20',
+                urlFormat: 'geohash',
+                style: 'fancy',
+                address: null,
+                addrcoord: null,
+                marks: [
+                    {
+                        "lat": 48.856,
+                        "lon": 2.363,
+                    },
+                    {
+                        "lat": 48.857,
+                        "lon": 2.363,
+                    },
+                    {
+                        "lat": 48.856,
+                        "lon": 2.364,
+                    },
+                    {
+                        "lat": 48.857,
+                        "lon": 2.364,
+                    }
                 ],
                 addresses: [],
                 useMilliGraticule: false,

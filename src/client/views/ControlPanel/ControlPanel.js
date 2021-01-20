@@ -3,7 +3,7 @@ import { Form, TextArea } from 'semantic-ui-react'
 import MapStyleSelector from '../MapStyleSelector'
 import './ControlPanel.css'
 
-const ControlPanel = ({ lat, lon, latText, lonText, zoom }) => {
+const ControlPanel = ({ lat, lon, latText, lonText, zoom, geohash }) => {
     return <div className='ControlPanel'>
         <Form>
             <Form.Input label='lat' value={lat} readOnly={true} />
@@ -15,6 +15,7 @@ const ControlPanel = ({ lat, lon, latText, lonText, zoom }) => {
                 rows={2}
                 style={{ resize: 'none', textAlign: 'right' }}
             />
+            <Form.Input label='geohash' value={geohash} readOnly={true} />
             <Form.Input label='zoom' value={zoom} readOnly={true} />
             <Form.Field label='style' >
             </Form.Field>

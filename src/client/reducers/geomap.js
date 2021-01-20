@@ -1,6 +1,8 @@
-import { SET_COORD, SET_ZOOM, SET_STYLE, NEED_ADDRESS_END, USE_MILLIGRATICULE, URL_STYLE, URL_MAP, SET_POPUP_STATUS } from "../constants/geomap";
+import { SET_COORD, SET_ZOOM, SET_STYLE, NEED_ADDRESS_END, USE_MILLIGRATICULE, SET_POPUP_STATUS } from "../constants/geomap";
+import { URL_MAP, URL_STYLE, URL_GEOHASH, URL_ZOOM, URL_FORMAT, URL_GOOGLE } from "../constants/geomap";
 import { LOCATION_CHANGE } from 'connected-react-router'
 import { createReducer, createLocationChangeReducer } from "./utils/createReducer";
+import Geohash from "../utils/Geohash";
 
 const markResolution = 1000;
 
@@ -22,10 +24,12 @@ const normalizeLatLon = (x) => Math.floor(x * 1000000) / 1000000;
 
 const impactLatLonChange = (state) => {
     let { lat, lon } = state;
+    console.log({ lat, lon })
     const nlat = normalizeLatLon(lat)
     const nlon = normalizeLatLon(lon)
     const latText = getLatLonText(lat, ['N', 'S']);
     const lonText = getLatLonText(lon, ['E', 'W']);
+    const geohash = Geohash.encode(lat, lon, 12);
     [lat, lon] = [lat, lon].map((x) => Math.floor(x * markResolution) / markResolution)
     const marks = [
         { lat, lon },
@@ -33,13 +37,14 @@ const impactLatLonChange = (state) => {
         { lat, lon: lon + 1 / markResolution },
         { lat: lat + 1 / markResolution, lon: lon + 1 / markResolution },
     ]
-    return { ...state, nlat, nlon, latText, lonText, marks };
+    return { ...state, nlat, nlon, latText, lonText, geohash, marks };
 }
 
 const initialState = impactLatLonChange({
     lat: 48.87,
     lon: 2.33,
     zoom: 15,
+    geohash: null,
     style: 'fr',
     address: null,
     addrcoord: null,
@@ -86,38 +91,57 @@ const findAddress = (state, lat, lon) => {
     return { address: null, addrcoord: null };
 }
 
+const updateStateWithLatLonZoomStr = (state, latStr, lonStr, zoomStr) => {
+    const zoom = Number.parseInt(zoomStr)
+    const lat = Number.parseFloat(latStr)
+    const lon = Number.parseFloat(lonStr)
+    let posChanged = false
+    // console.log({ lat, lon, zoom })
+    if (!isNaN(zoom)) {
+        if (zoom !== state.zoom) {
+            state = { ...state, zoom };
+        }
+    }
+    if (!isNaN(lat)) {
+        if (lat !== state.lat) {
+            state = impactLatLonChange({ ...state, lat, address: null });
+            posChanged = true
+        }
+    }
+    if (!isNaN(lon)) {
+        if (lon !== state.lon) {
+            state = impactLatLonChange({ ...state, lon, address: null });
+            posChanged = true
+        }
+    }
+    console.log(`lat: [${lat}] lon:[${lon}] posChanged:[${posChanged}]`)
+    if (posChanged && (!state.address)) {
+        const { address, addrcoord } = findAddress(state, state.lat, state.lon)
+        if (address) {
+            state = { ...state, address, addrcoord }
+        }
+    }
+    return state;
+}
+
+/**
+ * Ensure that the state really has the expected format, and set it if not.
+ * @param {Object} state The state
+ * @param {string} format the urlFormat to ensure in the state
+ */
+const ensureUrlFormat = (state, format) => {
+    if (state.urlFormat !== format) {
+        state = { ...state, urlFormat: format };
+    }
+    return state;
+}
+
 export default createReducer({
     [LOCATION_CHANGE]: createLocationChangeReducer({
         [URL_MAP]: (state, value) => {
             const [zoomStr, latStr, lonStr] = value.split('/')
-            const zoom = Number.parseInt(zoomStr)
-            const lat = Number.parseFloat(latStr)
-            const lon = Number.parseFloat(lonStr)
-            let posChanged = false
-            // console.log({ lat, lon, zoom })
-            if (!isNaN(zoom)) {
-                if (zoom !== state.zoom) {
-                    state = { ...state, zoom };
-                }
-            }
-            if (!isNaN(lat)) {
-                if (lat !== state.lat) {
-                    state = impactLatLonChange({ ...state, lat, address: null });
-                    posChanged = true
-                }
-            }
-            if (!isNaN(lon)) {
-                if (lon !== state.lon) {
-                    state = impactLatLonChange({ ...state, lon, address: null });
-                    posChanged = true
-                }
-            }
-            if (posChanged && (!state.address)) {
-                const { address, addrcoord } = findAddress(state, state.lat, state.lon)
-                if (address) {
-                    state = { ...state, address, addrcoord }
-                }
-            }
+            state = updateStateWithLatLonZoomStr(state, latStr, lonStr, zoomStr);
+            state = ensureUrlFormat(state, URL_MAP);
             return state;
         },
         [URL_STYLE]: (state, value) => {
@@ -126,7 +150,37 @@ export default createReducer({
                 state = { ...state, style };
             }
             return state;
-        }
+        },
+        [URL_GOOGLE]: (state, value) => {
+            if (value.startsWith('@')) {
+                value = value.substring(1);
+            }
+            if (value.endsWith('z')) {
+                value = value.substring(0, value.length - 1);
+            }
+            const [latStr, lonStr, zoomStr] = value.split(',');
+            state = updateStateWithLatLonZoomStr(state, latStr, lonStr, zoomStr);
+            state = ensureUrlFormat(state, URL_GOOGLE);
+            return state;
+        },
+        [URL_GEOHASH]: (state, value) => {
+            const geohash = value;
+            const { lat, lon } = Geohash.decode(geohash);
+
+            state = updateStateWithLatLonZoomStr(state, lat, lon);
+            state = ensureUrlFormat(state, URL_GEOHASH);
+            return state;
+        },
+        [URL_ZOOM]: (state, value) => {
+            const zoom = Number.parseInt(value)
+            state = { ...state, zoom };
+            return state;
+        },
+        [URL_FORMAT]: (state, value) => {
+            const urlFormat = value;
+            state = { ...state, urlFormat };
+            return state;
+        },
     }),
     [SET_COORD]: (state, action) => {
         let { lat, lon } = action;

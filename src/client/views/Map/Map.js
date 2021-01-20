@@ -10,7 +10,7 @@ const lastImpose = {
     time: null,
 }
 
-const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, onCenter, onZoom, marks, address, addrcoord, onNeedAddress, onPopupStatusChanged }) => {
+const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, geohash, onCenter, onZoom, marks, address, addrcoord, onNeedAddress, onPopupStatusChanged }) => {
     const position = [lat, lon]
     const mapRef = createRef();
 
@@ -40,7 +40,7 @@ const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, onCenter, on
         const onMoveEnd = (e) => {
             // console.log('onMoveEnd', e)
             const time = (new Date()).getTime()
-            if (time-lastImpose.time >= 800) {
+            if (time - lastImpose.time >= 800) {
                 if (onCenter) {
                     const x = e.sourceTarget.dragging._map.getCenter();
                     onCenter(x.lat, x.lng)
@@ -78,6 +78,7 @@ const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, onCenter, on
             }
         }
 
+        console.log(`Rendering with zoom [${zoom}]...`)
         return <div className='map'>
             <LeafMap
                 center={position}
@@ -93,8 +94,8 @@ const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, onCenter, on
                 />
                 {
                     addrcoord ?
-                    <Circle center={addrcoord} color='#ff3322' radius={2} ></Circle>
-                    : null
+                        <Circle center={addrcoord} color='#ff3322' radius={2} ></Circle>
+                        : null
                 }
                 <Marker position={position} onPopupOpen={onPopupOpen} onPopupClose={onPopupClose}>
                     <Popup>
@@ -103,6 +104,9 @@ const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, onCenter, on
                         Lon: {nlon} ({lonText})
                         <br />
                         {addressToDisplay}
+                        <br />
+                        <br />
+                        Geohash: {geohash}
                     </Popup>
                 </Marker>
                 {

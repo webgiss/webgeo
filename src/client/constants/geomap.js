@@ -9,3 +9,7 @@ export const SET_POPUP_STATUS = 'SET_POPUP_STATUS'
 
 export const URL_MAP = 'map'
 export const URL_STYLE = 'style'
+export const URL_GEOHASH = 'geohash'
+export const URL_ZOOM = 'zoom'
+export const URL_GOOGLE = 'google'
+export const URL_FORMAT = 'url'

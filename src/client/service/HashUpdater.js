@@ -1,8 +1,16 @@
-import { URL_STYLE, URL_MAP } from '../constants/geomap';
+import { URL_STYLE, URL_MAP, URL_GEOHASH, URL_ZOOM, URL_GOOGLE } from '../constants/geomap';
 
 const getPath = (geomap) => {
-    const { lat, lon, zoom, style } = geomap;
-    const canonicalPath = `#${URL_STYLE}=${style}&${URL_MAP}=${zoom}/${lat}/${lon}`;
+    const { lat, lon, zoom, style, geohash, urlFormat } = geomap;
+    let canonicalPath = null;
+    if (urlFormat === URL_GEOHASH) {
+        canonicalPath = `#${URL_STYLE}=${style}&${URL_ZOOM}=${zoom}&${URL_GEOHASH}=${geohash}`;
+    } else if (urlFormat === URL_GOOGLE) {
+        canonicalPath = `#${URL_STYLE}=${style}&${URL_GOOGLE}=@${lat},${lon},${zoom}z`;
+    } else {
+        canonicalPath = `#${URL_STYLE}=${style}&${URL_MAP}=${zoom}/${lat}/${lon}`;
+    }
+
     return canonicalPath
 }
 
@@ -14,7 +22,7 @@ export default class HashUpdater {
      * 
      * @param {import('../init/reactRedux').ReactReduxInit<State>} reactReduxInit 
      */
-    constructor(reactReduxInit) {
+    constructor (reactReduxInit) {
         this._reactReduxInit = reactReduxInit;
         this._reactReduxInit.addProvider(this)
     }
@@ -43,7 +51,7 @@ export default class HashUpdater {
                 window.h = history
                 // if (!hash || (hash === previousPath && hash !== currentPath)) {
                 if (!hash || (hash !== currentPath)) {
-                        history.push(currentPath);
+                    history.push(currentPath);
                 }
             }
         )
