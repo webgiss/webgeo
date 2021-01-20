@@ -371,6 +371,43 @@ describe(`geomap reducer`, () => {
                 popupStatus: false,
             })
         })
+        it(`should set lat lon based on human readable string`, async () => {
+            const state = geomap(dummyState, getAction("#human=48° 51' 23.7\" N2° 21' 48.05\" E"))
+            expect(state).toEqual({
+                lat: 48.85658333333333,
+                lon: 2.3633472222222225,
+                nlat: 48.856583,
+                nlon: 2.363347,
+                latText: "48° 51' 23.69\" N",
+                lonText: "2° 21' 48.05\" E",
+                zoom: 4,
+                geohash: 'u09tvy0fjzpr',
+                style: 'fancy',
+                address: null,
+                addrcoord: null,
+                marks: [
+                    {
+                        "lat": 48.856,
+                        "lon": 2.363,
+                    },
+                    {
+                        "lat": 48.857,
+                        "lon": 2.363,
+                    },
+                    {
+                        "lat": 48.856,
+                        "lon": 2.364,
+                    },
+                    {
+                        "lat": 48.857,
+                        "lon": 2.364,
+                    }
+                ],
+                addresses: [],
+                useMilliGraticule: false,
+                popupStatus: false,
+            })
+        })
         it(`should not change anything with no params`, async () => {
             const state = geomap(dummyState, getAction('#'))
             expect(state).toEqual(dummyState)
