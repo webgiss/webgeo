@@ -1,0 +1,44 @@
+.map {
+    position: absolute;
+    left: 150px;
+    right: 0px;
+    top: 20px;
+    bottom: 0px;
+}
+
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+}
+
+.mainPage {
+    background: rgb(238, 237, 228);
+    position: fixed;
+    top:2px;
+    bottom:2px;
+    left:2px;
+    right: 2px;
+}
+
+
+.Title {
+    position: relative;
+    height: 20px;
+    width: 100%;
+    background-color: rgb(231, 233, 218);
+}
+.ControlPanel {
+    position: absolute;
+    top: 20px;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    padding: 3px;
+}
+
+body {
+    background: linear-gradient(#ffffff, #f0f0f6);
+}
+ 
+
+/*# sourceMappingURL=webgeo.13f57455.css.map */
