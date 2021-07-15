@@ -141,16 +141,16 @@ export default {
     //         url: "https://www.strava.com/heatmap",
     //     }
     // },
-    geoportail_parcels: {
-        url: "https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=bdparcellaire&TILEMATRIXSET=PM&FORMAT=image/png&LAYER=CADASTRALPARCELS.PARCELS&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",
-        name: "Geoportail parcels",
-        maxZoom: 20,
-        rights: {
-            noosm: true,
-            name: "Geoportail France",
-            url: "https://geoportail.gouv.fr/",
-        }
-    },
+    // geoportail_parcels: {
+    //     url: "https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=bdparcellaire&TILEMATRIXSET=PM&FORMAT=image/png&LAYER=CADASTRALPARCELS.PARCELS&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",
+    //     name: "Geoportail parcels",
+    //     maxZoom: 20,
+    //     rights: {
+    //         noosm: true,
+    //         name: "Geoportail France",
+    //         url: "https://geoportail.gouv.fr/",
+    //     }
+    // },
     // geoportail_ignmap: {
     //     test:"https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/jpeg&LAYER=GEOGRAPHICALGRIDSYSTEMS.MAPS&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",
     //     name: "Geoportail IGN Map",
@@ -161,16 +161,16 @@ export default {
     //         url: "https://geoportail.gouv.fr/",
     //     }
     // },
-    geoportail_map: {
-        url: "https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/jpeg&LAYER=GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",
-        name: "Geoportail Map",
-        maxZoom: 18,
-        rights: {
-            noosm: true,
-            name: "Geoportail France",
-            url: "https://geoportail.gouv.fr/",
-        }
-    },
+    // geoportail_map: {
+    //     url: "https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/jpeg&LAYER=GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",
+    //     name: "Geoportail Map",
+    //     maxZoom: 18,
+    //     rights: {
+    //         noosm: true,
+    //         name: "Geoportail France",
+    //         url: "https://geoportail.gouv.fr/",
+    //     }
+    // },
     geoportail_orthos: {
         url: "https://wxs.ign.fr/choisirgeoportail/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT=image/jpeg&LAYER=ORTHOIMAGERY.ORTHOPHOTOS&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",
         name: "Geoportail photos",
