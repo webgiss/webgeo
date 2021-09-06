@@ -121,6 +121,33 @@ export default {
             name: "Thunderforest",
         },
     },
+    GoogleStreet: {
+        url: "http://mt0.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+        name: "Google",
+        rights: {
+            noosm: true,
+            url: "http://maps.google.com/",
+            name: "Google",
+        }
+    },
+    GoogleHybrid: {
+        url: "http://mt1.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
+        name: "Google Hybrid",
+        rights: {
+            noosm: true,
+            url: "http://maps.google.com/",
+            name: "Google",
+        }
+    },
+    GoogleSatellite: {
+        url: "http://mt2.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+        name: "Google Satellite",
+        rights: {
+            noosm: true,
+            url: "http://maps.google.com/",
+            name: "Google",
+        }
+    },
     // route500: {
     //     url: "https://{s}.tile.openstreetmap.fr/route500/{z}/{x}/{y}.png",
     //     name: "Route500",
