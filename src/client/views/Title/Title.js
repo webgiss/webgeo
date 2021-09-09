@@ -19,8 +19,8 @@ const Title = ({ nlat, nlon, latText, lonText, address }) => {
         <Helmet>
             <title>{title}</title>
         </Helmet>
-        Map ( {nlat}, {nlon} ) - {lonText} - {latText} {address ? ' - '+address : ''}
     </div>
+    //    Map ( {nlat}, {nlon} ) - {lonText} - {latText} {address ? ' - '+address : ''}
 }
 
 export default Title;
