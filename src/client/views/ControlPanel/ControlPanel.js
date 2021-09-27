@@ -23,7 +23,8 @@ const ControlPanel = ({ lat, lon, latText, lonText, zoom, geohash }) => {
             <MapStyleSelector />
             <hr/>
             <ExtLinkButton text='Google' url={`https://maps.google.com/maps/@${lat},${lon},${zoom}z`}/>
-            <ExtLinkButton text='OSM' url={`https://www.openstreetmap.org/#map=${zoom}/${lat}/${lon}`}/>
+            <ExtLinkButton text='OSM' url={`https://www.openstreetmap.org/#map=${zoom}/${lat}/${lon}`} />
+            <ExtLinkButton text='Géoportail' url={`https://www.geoportail.gouv.fr/carte?c=${lon},${lat}&z=${zoom}&l0=ORTHOIMAGERY.ORTHOPHOTOS::GEOPORTAIL:OGC:WMTS(1)&permalink=yes`} />
         </Form>
     </div>
 }
