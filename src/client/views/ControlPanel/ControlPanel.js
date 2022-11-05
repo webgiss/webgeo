@@ -11,7 +11,7 @@ const ControlPanel = ({ lat, lon, latText, lonText, zoom, geohash }) => {
             <Form.Input label='lon' value={lon} readOnly={true} />
             <TextArea
                 label='latlontext'
-                value={`${lonText}\n${latText}`}
+                value={`${latText}\n${lonText}`}
                 readOnly={true}
                 rows={2}
                 style={{ resize: 'none', textAlign: 'right' }}
