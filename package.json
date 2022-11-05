@@ -11,6 +11,9 @@
     "build": "cross-env NODE_ENV=production parcel build ./src/index.html --no-minify",
     "build-gh": "cross-env NODE_ENV=production parcel build ./src/index.html --no-minify",
     "b": "cross-env NODE_ENV=production parcel build ./src/index.html --no-source-maps --dist-dir ./dist/",
+    "latlonparser": "run-s latlonparser:jison latlonparser:patch",
+    "latlonparser:jison": "jison src/client/reducers/utils/latlonparser.jison -o src/client/reducers/utils/latlonparser.js -m js",
+    "latlonparser:patch": "node -e \"const fs = require('fs'); const fp = './src/client/reducers/utils/latlonparser.js'; const d = fs.readFileSync(fp); fs.writeFileSync(fp, '/* eslint-disable */\\n' + d + '\\nexport default latlonparser;\\n');\"",
     "clean": "rm -rf ./.parcel-cache; rm -rf ./dist; ls -la",
     "test": "cross-env NODE_ENV=test jest",
     "hygen": "hygen",
@@ -58,8 +61,11 @@
     "hygen": "^6.0.4",
     "jest": "^26.1.0",
     "jest-html-reporter": "^3.2.0",
+    "jison": "^0.4.18",
     "parcel": "^2.0.0-beta.1",
+    "run-s": "^0.0.0",
     "semantic-ui-react": "^0.88.2",
-    "storybook-react-router": "^1.0.8"
+    "storybook-react-router": "^1.0.8",
+    "yarn-run-all": "^3.1.1"
   }
 }

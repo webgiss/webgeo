@@ -3,6 +3,7 @@ import { URL_MAP, URL_STYLE, URL_GEOHASH, URL_ZOOM, URL_FORMAT, URL_GOOGLE, URL_
 import { LOCATION_CHANGE } from 'connected-react-router'
 import { createReducer, createLocationChangeReducer } from "./utils/createReducer";
 import Geohash from "../utils/Geohash";
+import { parseLatLon } from "./utils/latlon";
 
 const markResolution = 1000;
 
@@ -183,72 +184,10 @@ export default createReducer({
         },
         [URL_HUMAN]: (state, value) => {
             value = decodeURI(value);
-            value = value.replace(/ /g, '');
-            let lat = null;
-            let lon = null;
-            let zoom = null;
-            value.split(/[^NEWSOz]/).filter(x => x.length > 0).forEach((letter) => {
-                let [hms, ...remaining] = value.split(letter);
-                value = remaining.join(letter);
-                // console.log(`Parsing [${hms}][${letter}]`);
-                let coord = 0;
-                hms.split(/[^°hd'm"s]/).filter(x => x.length > 0).forEach((symbol) => {
-                    let [dataStr, ...remaining] = hms.split(symbol);
-                    hms = remaining.join(symbol);
-                    const data = Number.parseFloat(dataStr)
-                    switch (symbol) {
-                        case '°':
-                        case 'h':
-                        case 'd':
-                            {
-                                coord += data;
-                                break;
-                            }
-                        case "'":
-                        case 'm':
-                            {
-                                coord += data / 60;
-                                break;
-                            }
-                        case '"':
-                        case 's':
-                            {
-                                coord += data / (60 * 60);
-                                break;
-                            }
-                    }
-                    // console.log(`    Parsing [${data}][${symbol}]`);
-                })
-                switch (letter) {
-                    case 'N':
-                        {
-                            lat = coord;
-                            break;
-                        }
-                    case 'S':
-                        {
-                            lat = -coord;
-                            break;
-                        }
-                    case 'E':
-                        {
-                            lon = coord;
-                            break;
-                        }
-                    case 'W':
-                    case 'O':
-                        {
-                            lon = -coord;
-                            break;
-                        }
-                    case 'z':
-                        {
-                            zoom = Number.parseInt(hms);
-                            break;
-                        }
-                }
-            });
-            state = updateStateWithLatLonZoomStr(state, lat, lon, zoom);
+            const parsedLatLon = parseLatLon(value)
+            if (parsedLatLon.parsed) {
+                state = updateStateWithLatLonZoomStr(state, parsedLatLon.lat, parsedLatLon.lon, null);
+            }
             return state;
         },
     }),
