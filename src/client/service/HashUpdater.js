@@ -1,12 +1,14 @@
-import { URL_STYLE, URL_MAP, URL_GEOHASH, URL_ZOOM, URL_GOOGLE } from '../constants/geomap';
+import { URL_STYLE, URL_MAP, URL_GEOHASH, URL_ZOOM, URL_GOOGLE, URL_HUMAN } from '../constants/geomap';
 
 const getPath = (geomap) => {
-    const { lat, lon, zoom, style, geohash, urlFormat } = geomap;
+    const { lat, lon, latCan, lonCan, zoom, style, geohash, urlFormat } = geomap;
     let canonicalPath = null;
     if (urlFormat === URL_GEOHASH) {
         canonicalPath = `#${URL_STYLE}=${style}&${URL_ZOOM}=${zoom}&${URL_GEOHASH}=${geohash}`;
     } else if (urlFormat === URL_GOOGLE) {
         canonicalPath = `#${URL_STYLE}=${style}&${URL_GOOGLE}=@${lat},${lon},${zoom}z`;
+    } else if (urlFormat === URL_HUMAN) {
+        canonicalPath = `#${URL_STYLE}=${style}&${URL_ZOOM}=${zoom}&${URL_HUMAN}=${latCan};${lonCan}`;
     } else {
         canonicalPath = `#${URL_STYLE}=${style}&${URL_MAP}=${zoom}/${lat}/${lon}`;
     }

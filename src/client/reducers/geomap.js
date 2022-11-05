@@ -7,7 +7,9 @@ import { parseLatLon } from "./utils/latlon";
 
 const markResolution = 1000;
 
-const getLatLonText = (value, directionArray) => {
+const getPaddedNumber = data => `${data}`.padStart(2, '0')
+
+const getLatLonTextCan = (value, directionArray) => {
     let indexSign = 0
     if (value < 0) {
         indexSign = 1
@@ -18,7 +20,10 @@ const getLatLonText = (value, directionArray) => {
     let valueMin = Math.floor(value)
     value = (value - valueMin) * 60
     let valueSec = Math.floor(value * 100) / 100
-    return `${valueDeg}° ${valueMin}' ${valueSec}" ${directionArray[indexSign]}`
+    return {
+        text: `${valueDeg}° ${valueMin}' ${valueSec}" ${directionArray[indexSign]}`,
+        can: `${getPaddedNumber(valueDeg)}:${getPaddedNumber(valueMin)}:${getPaddedNumber(valueSec)}${directionArray[indexSign]}`,
+    }
 }
 
 const normalizeLatLon = (x) => Math.floor(x * 1000000) / 1000000;
@@ -28,8 +33,8 @@ const impactLatLonChange = (state) => {
     // console.log({ lat, lon })
     const nlat = normalizeLatLon(lat)
     const nlon = normalizeLatLon(lon)
-    const latText = getLatLonText(lat, ['N', 'S']);
-    const lonText = getLatLonText(lon, ['E', 'W']);
+    const { text: latText, can: latCan } = getLatLonTextCan(lat, ['N', 'S']);
+    const { text: lonText, can: lonCan } = getLatLonTextCan(lon, ['E', 'W']);
     const geohash = Geohash.encode(lat, lon, 12);
     [lat, lon] = [lat, lon].map((x) => Math.floor(x * markResolution) / markResolution)
     const marks = [
@@ -38,7 +43,7 @@ const impactLatLonChange = (state) => {
         { lat, lon: lon + 1 / markResolution },
         { lat: lat + 1 / markResolution, lon: lon + 1 / markResolution },
     ]
-    return { ...state, nlat, nlon, latText, lonText, geohash, marks };
+    return { ...state, nlat, nlon, latText, lonText, latCan, lonCan, geohash, marks };
 }
 
 const initialState = impactLatLonChange({
@@ -166,9 +171,11 @@ export default createReducer({
         },
         [URL_GEOHASH]: (state, value) => {
             const geohash = value;
-            const { lat, lon } = Geohash.decode(geohash);
-
-            state = updateStateWithLatLonZoomStr(state, lat, lon);
+            try {
+                const { lat, lon } = Geohash.decode(geohash);
+                state = updateStateWithLatLonZoomStr(state, lat, lon);
+            } catch {
+            }
             state = ensureUrlFormat(state, URL_GEOHASH);
             return state;
         },
@@ -188,6 +195,7 @@ export default createReducer({
             if (parsedLatLon.parsed) {
                 state = updateStateWithLatLonZoomStr(state, parsedLatLon.lat, parsedLatLon.lon, null);
             }
+            state = ensureUrlFormat(state, URL_HUMAN);
             return state;
         },
     }),
