@@ -57,7 +57,7 @@ describe(`needAddress`, () => {
         }))
     })
     global.fetch = jest.fn((url) => {
-        console.log(url)
+        // console.log(url)
         switch (url) {
             case 'https://api-adresse.data.gouv.fr/reverse/?lon=3.1&lat=1.1':
                 {
@@ -85,7 +85,7 @@ describe(`needAddress`, () => {
             { type: NEED_ADDRESS_START, lat: 1.1, lon: 3.1 },
             { type: NEED_ADDRESS_END, lat: 1.1, lon: 3.1, addrcoord: [3.07, 1.1002], address: "This is the address (100 %)" },
         ])
-        console.log(JSON.stringify(dispatched, null, 2))
+        // console.log(JSON.stringify(dispatched, null, 2))
     })
     it(`should return an address for (1.7,3.7)`, async () => {
         const action = needAddress(1.7, 3.7);
@@ -99,7 +99,7 @@ describe(`needAddress`, () => {
             { type: NEED_ADDRESS_START, lat: 1.7, lon: 3.7 },
             { type: NEED_ADDRESS_END, lat: 1.7, lon: 3.7, addrcoord: [3.77, 1.7002], address: "This is another address (51 %)\nThis is a third address (49 %)" },
         ])
-        console.log(JSON.stringify(dispatched, null, 2))
+        // console.log(JSON.stringify(dispatched, null, 2))
     })
     it(`should not return an address for (1.1,3.7)`, async () => {
         const action = needAddress(1.1, 3.7);
@@ -113,6 +113,6 @@ describe(`needAddress`, () => {
             { type: NEED_ADDRESS_START, lat: 1.1, lon: 3.7 },
             { type: NEED_ADDRESS_FAIL, lat: 1.1, lon: 3.7 },
         ])
-        console.log(JSON.stringify(dispatched, null, 2))
+        // console.log(JSON.stringify(dispatched, null, 2))
     })
 })
