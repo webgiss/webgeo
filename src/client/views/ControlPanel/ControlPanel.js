@@ -27,6 +27,8 @@ const ControlPanel = ({ lat, lon, latText, lonText, zoom, geohash }) => {
             <ExtLinkButton text='Géoportail' url={`https://www.geoportail.gouv.fr/carte?c=${lon},${lat}&z=${zoom}&l0=ORTHOIMAGERY.ORTHOPHOTOS::GEOPORTAIL:OGC:WMTS(1)&permalink=yes`} />
             <hr/>
             <ExtLinkButton text='Windy' url={`https://www.windy.com/${lat}/${lon}?pressure,${lat},${lon},${zoom}`} />
+            <ExtLinkButton text='nullschool' url={`https://earth.nullschool.net/#current/wind/surface/level/orthographic=${lon},${lat},4000/loc=${lon},${lat}`} />
+            <ExtLinkButton text='blitzortung' url={`https://map.blitzortung.org/#${zoom}/${lat}/${lon}`} />
         </Form>
     </div>
 }
