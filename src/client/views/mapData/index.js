@@ -19,13 +19,41 @@ export default {
         url: "https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png",
         name: "BZH",
     },
-    stamen: {
-        url: "http://a.tile.stamen.com/toner/{z}/{x}/{y}.png",
-        name: "Stamen",
+    toner: {
+        url: "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
+        name: "Toner",
+        rights: {
+            name: "Stamen Design",
+            url: "http://stamen.com",
+            license: {
+                name: "CC BY 3.0",
+                url: "https://creativecommons.org/licenses/by/3.0",
+            },
+        },
+    },
+    terrain: {
+        url: "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg",
+        name: "Terrain",
+        rights: {
+            name: "Stamen Design",
+            url: "http://stamen.com",
+            license: {
+                name: "CC BY 3.0",
+                url: "https://creativecommons.org/licenses/by/3.0",
+            },
+        },
     },
     watercolor: {
-        url: "http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg",
+        url: "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
         name: "Watercolor",
+        rights: {
+            name: "Stamen Design",
+            url: "http://stamen.com",
+            license: {
+                name: "CC BY 3.0",
+                url: "https://creativecommons.org/licenses/by/3.0",
+            },
+        },
     },
     opentopomap: {
         url: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
