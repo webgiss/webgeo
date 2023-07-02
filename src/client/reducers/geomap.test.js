@@ -1,4 +1,4 @@
-import { SET_COORD, SET_POPUP_STATUS, SET_STYLE, SET_ZOOM, USE_MILLIGRATICULE } from '../constants/geomap'
+import { CLOSE_ABOUT_WINDOW, OPEN_ABOUT_WINDOW, SET_COORD, SET_POPUP_STATUS, SET_STYLE, SET_ZOOM, USE_MILLIGRATICULE } from '../constants/geomap'
 import geomap from './geomap'
 
 const dummyState = {
@@ -12,6 +12,7 @@ const dummyState = {
     addresses: [],
     useMilliGraticule: false,
     popupStatus: false,
+    aboutWindowOpened: false,
 }
 
 describe(`geomap reducer`, () => {
@@ -20,7 +21,7 @@ describe(`geomap reducer`, () => {
             Object.keys(geomap(null, { type: '' }))
         ).toEqual([
             'lat', 'lon', 'zoom', 'geohash', 'style', 'address', 'addrcoord',
-            'marks', 'addresses', 'useMilliGraticule', 'popupStatus',
+            'marks', 'addresses', 'useMilliGraticule', 'popupStatus', 'aboutWindowOpened',
             'nlat', 'nlon', 'latText', 'lonText', 'latCan', 'lonCan'
         ])
     )
@@ -65,6 +66,7 @@ describe(`geomap reducer`, () => {
                     addresses: [],
                     useMilliGraticule: false,
                     popupStatus: false,
+                    aboutWindowOpened: false,
                 }
             )
         })
@@ -122,6 +124,7 @@ describe(`geomap reducer`, () => {
                     addresses,
                     useMilliGraticule: false,
                     popupStatus: false,
+                    aboutWindowOpened: false,
                 }
             )
         })
@@ -140,6 +143,7 @@ describe(`geomap reducer`, () => {
                 addresses: [],
                 useMilliGraticule: false,
                 popupStatus: false,
+                aboutWindowOpened: false,
             })
         })
     })
@@ -157,6 +161,7 @@ describe(`geomap reducer`, () => {
                 addresses: [],
                 useMilliGraticule: false,
                 popupStatus: false,
+                aboutWindowOpened: false,
             })
         })
     })
@@ -221,6 +226,7 @@ describe(`geomap reducer`, () => {
                 addresses: [],
                 useMilliGraticule: false,
                 popupStatus: false,
+                aboutWindowOpened: false,
             })
         })
         it(`should be able to modify only the style`, async () => {
@@ -245,6 +251,7 @@ describe(`geomap reducer`, () => {
                 addresses: [],
                 useMilliGraticule: false,
                 popupStatus: false,
+                aboutWindowOpened: false,
             })
         })
         it(`should be able to modify only the zoom`, async () => {
@@ -261,6 +268,7 @@ describe(`geomap reducer`, () => {
                 addresses: [],
                 useMilliGraticule: false,
                 popupStatus: false,
+                aboutWindowOpened: false,
             })
         })
         it(`should be able to modify only the lat`, async () => {
@@ -301,6 +309,7 @@ describe(`geomap reducer`, () => {
                 addresses: [],
                 useMilliGraticule: false,
                 popupStatus: false,
+                aboutWindowOpened: false,
             })
         })
         it(`should be able to modify only the lon`, async () => {
@@ -341,6 +350,7 @@ describe(`geomap reducer`, () => {
                 addresses: [],
                 useMilliGraticule: false,
                 popupStatus: false,
+                aboutWindowOpened: false,
             })
         })
         it(`should change lat and lon with geohash`, async () => {
@@ -381,6 +391,7 @@ describe(`geomap reducer`, () => {
                 addresses: [],
                 useMilliGraticule: false,
                 popupStatus: false,
+                aboutWindowOpened: false,
             })
         })
         it(`should set lat lon based on human readable string`, async () => {
@@ -421,6 +432,7 @@ describe(`geomap reducer`, () => {
                 addresses: [],
                 useMilliGraticule: false,
                 popupStatus: false,
+                aboutWindowOpened: false,
             })
         })
         it(`should not change anything with no params`, async () => {
@@ -443,6 +455,7 @@ describe(`geomap reducer`, () => {
                 addresses: [],
                 useMilliGraticule: true,
                 popupStatus: false,
+                aboutWindowOpened: false,
             })
         })
     })
@@ -461,6 +474,45 @@ describe(`geomap reducer`, () => {
                 addresses: [],
                 useMilliGraticule: false,
                 popupStatus: true,
+                aboutWindowOpened: false,
+            })
+        })
+    })
+    describe(`OPEN_ABOUT_WINDOW action`, () => {
+        it(`should set aboutWindowOpened is state`, async () => {
+            const action = { type: OPEN_ABOUT_WINDOW };
+            const state = geomap(dummyState, action)
+            expect(state).toEqual({
+                lat: 0.5,
+                lon: 0.7,
+                zoom: 4,
+                style: 'fancy',
+                address: null,
+                addrcoord: null,
+                marks: [],
+                addresses: [],
+                useMilliGraticule: false,
+                popupStatus: false,
+                aboutWindowOpened: true,
+            })
+        })
+    })
+    describe(`CLOSE_ABOUT_WINDOW action`, () => {
+        it(`should set aboutWindowOpened is state`, async () => {
+            const action = { type: CLOSE_ABOUT_WINDOW };
+            const state = geomap({ ...dummyState, aboutWindowOpened: true }, action)
+            expect(state).toEqual({
+                lat: 0.5,
+                lon: 0.7,
+                zoom: 4,
+                style: 'fancy',
+                address: null,
+                addrcoord: null,
+                marks: [],
+                addresses: [],
+                useMilliGraticule: false,
+                popupStatus: false,
+                aboutWindowOpened: false,
             })
         })
     })
