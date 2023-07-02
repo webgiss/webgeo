@@ -51,7 +51,7 @@ const initialState = impactLatLonChange({
     lon: 2.33,
     zoom: 15,
     geohash: null,
-    style: 'fr',
+    style: 'org',
     address: null,
     addrcoord: null,
     marks: [],
