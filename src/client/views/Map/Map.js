@@ -38,7 +38,6 @@ const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, geohash, onC
             }
         }
         const onMoveEnd = (e) => {
-            // console.log('onMoveEnd', e)
             const time = (new Date()).getTime()
             if (time - lastImpose.time >= 800) {
                 if (onCenter) {
@@ -78,7 +77,6 @@ const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, geohash, onC
             }
         }
 
-        console.log(`Rendering with zoom [${zoom}]...`)
         return <div className='map'>
             <LeafMap
                 center={position}

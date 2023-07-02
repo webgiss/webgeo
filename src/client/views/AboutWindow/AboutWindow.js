@@ -4,7 +4,6 @@ import './AboutWindow.css'
 import { Button, Header, Modal } from 'semantic-ui-react';
 
 const AboutWindow = ({ open, onClose }) => {
-    console.log('AboutWindow', open, onClose)
     return <Modal
         className='AboutWindow'
         open={open}

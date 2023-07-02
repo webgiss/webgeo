@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MainPage from '../MainPage';
 import '../main.css';
 
-// console.log({MainPage})
-
 export default () => {
     let basename=undefined
     const base=document.querySelector('base')
