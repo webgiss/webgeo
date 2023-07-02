@@ -3,10 +3,11 @@ import { Form, TextArea } from 'semantic-ui-react'
 import ExtLinkButton from '../ExtLinkButton/ExtLinkButton';
 import MapStyleSelector from '../MapStyleSelector'
 import './ControlPanel.css'
+import AboutButton from '../AboutButton';
 
 const ControlPanel = ({ lat, lon, latText, lonText, zoom, geohash }) => {
     return <div className='ControlPanel'>
-        <Form>
+        <Form className='ControlPanelForm'>
             <Form.Input label='lat' value={lat} readOnly={true} />
             <Form.Input label='lon' value={lon} readOnly={true} />
             <TextArea
@@ -29,6 +30,7 @@ const ControlPanel = ({ lat, lon, latText, lonText, zoom, geohash }) => {
             <ExtLinkButton text='Windy' url={`https://www.windy.com/${lat}/${lon}?pressure,${lat},${lon},${zoom}`} />
             <ExtLinkButton text='nullschool' url={`https://earth.nullschool.net/#current/wind/surface/level/orthographic=${lon},${lat},4000/loc=${lon},${lat}`} />
             <ExtLinkButton text='blitzortung' url={`https://map.blitzortung.org/#${zoom-1}/${lat}/${lon}`} />
+            <AboutButton text='About' />
         </Form>
     </div>
 }

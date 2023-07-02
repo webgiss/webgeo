@@ -1,4 +1,4 @@
-import { SET_COORD, SET_ZOOM, SET_STYLE, NEED_ADDRESS_START, NEED_ADDRESS_END, NEED_ADDRESS_FAIL, USE_MILLIGRATICULE, SET_POPUP_STATUS } from "../constants/geomap";
+import { SET_COORD, SET_ZOOM, SET_STYLE, NEED_ADDRESS_START, NEED_ADDRESS_END, NEED_ADDRESS_FAIL, USE_MILLIGRATICULE, SET_POPUP_STATUS, OPEN_ABOUT_WINDOW, CLOSE_ABOUT_WINDOW } from "../constants/geomap";
 
 
 export const setCoord = (lat, lon) => ({ type: SET_COORD, lat, lon });
@@ -6,6 +6,8 @@ export const setZoom = (zoom) => ({ type: SET_ZOOM, zoom });
 export const setStyle = (style) => ({ type: SET_STYLE, style });
 export const changeMilliGraticule = (useMilliGraticule) => ({ type: USE_MILLIGRATICULE, useMilliGraticule });
 export const setPopupStatus = (popupStatus) => ({ type: SET_POPUP_STATUS, popupStatus })
+export const openAboutWindow = () => ({ type: OPEN_ABOUT_WINDOW })
+export const closeAboutWindow = () => ({ type: CLOSE_ABOUT_WINDOW })
 export const needAddress = (lat, lon) => async (dispatch, getState) => {
     dispatch({ type: NEED_ADDRESS_START, lat, lon });
     try {

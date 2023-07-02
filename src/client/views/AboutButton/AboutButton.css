@@ -1,0 +1,8 @@
+.ui.green.button.AboutButton {
+    width: 100%;
+    line-height: 0.2em;
+    bottom: 0;
+    position: absolute;
+    margin-bottom: 0px !important;
+    margin-top: 5px !important;
+}

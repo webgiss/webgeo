@@ -1,4 +1,4 @@
-import { SET_COORD, SET_ZOOM, SET_STYLE, NEED_ADDRESS_END, USE_MILLIGRATICULE, SET_POPUP_STATUS } from "../constants/geomap";
+import { SET_COORD, SET_ZOOM, SET_STYLE, NEED_ADDRESS_END, USE_MILLIGRATICULE, SET_POPUP_STATUS, OPEN_ABOUT_WINDOW, CLOSE_ABOUT_WINDOW } from "../constants/geomap";
 import { URL_MAP, URL_STYLE, URL_GEOHASH, URL_ZOOM, URL_FORMAT, URL_GOOGLE, URL_HUMAN } from "../constants/geomap";
 import { LOCATION_CHANGE } from 'connected-react-router'
 import { createReducer, createLocationChangeReducer } from "./utils/createReducer";
@@ -58,6 +58,7 @@ const initialState = impactLatLonChange({
     addresses: [],
     useMilliGraticule: false,
     popupStatus: false,
+    aboutWindowOpened: false,
 });
 
 const updateAddress = (state, lat, lon, address, addrcoord) => {
@@ -230,5 +231,17 @@ export default createReducer({
             state = { ...state, popupStatus }
         }
         return state;
-    }
+    },
+    [OPEN_ABOUT_WINDOW]: (state) => {
+        if (!state.aboutWindowOpened) {
+            state = { ...state, aboutWindowOpened: true }
+        }
+        return state
+    },
+    [CLOSE_ABOUT_WINDOW]: (state) => {
+        if (state.aboutWindowOpened) {
+            state = { ...state, aboutWindowOpened: false }
+        }
+        return state
+    },
 }, initialState);

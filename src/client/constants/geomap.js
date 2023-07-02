@@ -6,6 +6,8 @@ export const NEED_ADDRESS_END = 'NEED_ADDRESS_END'
 export const NEED_ADDRESS_FAIL = 'NEED_ADDRESS_FAIL'
 export const USE_MILLIGRATICULE = 'USE_MILLIGRATICULE'
 export const SET_POPUP_STATUS = 'SET_POPUP_STATUS'
+export const OPEN_ABOUT_WINDOW = 'OPEN_ABOUT_WINDOW'
+export const CLOSE_ABOUT_WINDOW = 'CLOSE_ABOUT_WINDOW'
 
 export const URL_MAP = 'map'
 export const URL_STYLE = 'style'
