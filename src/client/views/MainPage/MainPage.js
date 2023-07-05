@@ -5,6 +5,7 @@ import './MainPage.css'
 import Title from '../Title';
 import ControlPanel from '../ControlPanel';
 import AboutWindow from '../AboutWindow';
+import CoordInputWindow from '../CoordInputWindow';
 
 const MainPage = ({ }) => {
     return <div className='mainPage'>
@@ -15,6 +16,7 @@ const MainPage = ({ }) => {
         <Title/>
         <Map/>
         <AboutWindow/>
+        <CoordInputWindow/>
     </div>
 }
 

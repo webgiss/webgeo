@@ -1,6 +1,6 @@
 import configDao from '../dao/config';
 import { MD5, SHA256 } from 'crypto-js'
-import mapData from '../views/mapData'
+import mapData from '../utils/mapData'
 
 const initialState = {};
 

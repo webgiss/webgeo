@@ -4,8 +4,9 @@ import ExtLinkButton from '../ExtLinkButton/ExtLinkButton';
 import MapStyleSelector from '../MapStyleSelector'
 import './ControlPanel.css'
 import AboutButton from '../AboutButton';
+import ActionButton from '../ActionButton';
 
-const ControlPanel = ({ lat, lon, latText, lonText, zoom, geohash }) => {
+const ControlPanel = ({ lat, lon, latText, lonText, zoom, geohash, onInputCoord }) => {
     return <div className='ControlPanel'>
         <Form className='ControlPanelForm'>
             <Form.Input label='lat' value={lat} readOnly={true} />
@@ -22,6 +23,8 @@ const ControlPanel = ({ lat, lon, latText, lonText, zoom, geohash }) => {
             <Form.Field label='style' >
             </Form.Field>
             <MapStyleSelector />
+            <hr/>
+            <ActionButton text='Input Coord' onClick={onInputCoord} />
             <hr/>
             <ExtLinkButton text='Google' url={`https://maps.google.com/maps/@${lat},${lon},${zoom}z`}/>
             <ExtLinkButton text='OSM' url={`https://www.openstreetmap.org/#map=${zoom}/${lat}/${lon}`} />

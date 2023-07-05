@@ -1,0 +1,50 @@
+.CoordInputWindowTextarea {
+    width: 100%;
+    height: 6em;
+}
+
+.CoordInputWindowCoords {
+    width: 100%;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.CoordInputWindowParsingInfo {
+    width: 100%;
+    margin: 5px;
+    color: red;
+    height: 3em;
+    text-align: center;
+    white-space: pre;
+}
+
+.CoordInputWindowCoordsLine {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.CoordInputWindowCoordsItem, .CoordInputWindowCoordsItemHeader {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.CoordInputWindowCoordsItemHeader {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.CoordInputWindowMap {
+    width: 100%;
+    height: 150px;
+    position: relative;
+}
+
+.CoordInputWindowNoMap {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    background-color: #aaa;
+}

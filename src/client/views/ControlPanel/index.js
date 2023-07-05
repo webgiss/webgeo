@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        onInputCoord: () => dispatch(actions.geomap.openInputCoordWindow()),
     };
 }
 

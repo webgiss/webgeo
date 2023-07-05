@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Dropdown } from 'semantic-ui-react'
-import mapData from '../mapData'
+import { Dropdown } from 'semantic-ui-react'
+import { getStyleNames } from '../../utils/mapData';
+
 
 const MapStyleSelector = ({ style, onStyleSelected }) => {
     window.x = onStyleSelected;
@@ -12,7 +13,7 @@ const MapStyleSelector = ({ style, onStyleSelected }) => {
             // defaultValue={style}
             value={style}
             onChange={(e, { value }) => onStyleSelected(value)}
-            options={Object.keys(mapData).map((key) => ({ key, text: mapData[key].name, value: key }))}
+            options={getStyleNames().map((item) => ({ key: item.key, text: item.name, value: item.key }))}
         />
     </div>
 }

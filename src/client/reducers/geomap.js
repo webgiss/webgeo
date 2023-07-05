@@ -1,4 +1,4 @@
-import { SET_COORD, SET_ZOOM, SET_STYLE, NEED_ADDRESS_END, USE_MILLIGRATICULE, SET_POPUP_STATUS, OPEN_ABOUT_WINDOW, CLOSE_ABOUT_WINDOW } from "../constants/geomap";
+import { SET_COORD, SET_ZOOM, SET_STYLE, NEED_ADDRESS_END, USE_MILLIGRATICULE, SET_POPUP_STATUS, OPEN_ABOUT_WINDOW, CLOSE_ABOUT_WINDOW, OPEN_INPUT_COORD_WINDOW, CLOSE_INPUT_COORD_WINDOW, UPDATE_INPUT_COORD, IMPORT_INPUT_COORD } from "../constants/geomap";
 import { URL_MAP, URL_STYLE, URL_GEOHASH, URL_ZOOM, URL_FORMAT, URL_GOOGLE, URL_HUMAN } from "../constants/geomap";
 import { LOCATION_CHANGE } from 'connected-react-router'
 import { createReducer, createLocationChangeReducer } from "./utils/createReducer";
@@ -59,6 +59,11 @@ const initialState = impactLatLonChange({
     useMilliGraticule: false,
     popupStatus: false,
     aboutWindowOpened: false,
+    inputCoordWindowOpened: false,
+    inputCoord: '',
+    inputCoordParsed: null,
+    inputCoordParsedError: null,
+    inputCoordZoom: 14,
 });
 
 const updateAddress = (state, lat, lon, address, addrcoord) => {
@@ -241,6 +246,44 @@ export default createReducer({
     [CLOSE_ABOUT_WINDOW]: (state) => {
         if (state.aboutWindowOpened) {
             state = { ...state, aboutWindowOpened: false }
+        }
+        return state
+    },
+    [OPEN_INPUT_COORD_WINDOW]: (state) => {
+        if (!state.inputCoordWindowOpened) {
+            state = { ...state, inputCoordWindowOpened: true }
+        }
+        return state
+    },
+    [CLOSE_INPUT_COORD_WINDOW]: (state) => {
+        if (state.inputCoordWindowOpened) {
+            state = { ...state, inputCoordWindowOpened: false }
+        }
+        return state
+    },
+    [UPDATE_INPUT_COORD]: (state, action) => {
+        const { data } = action;
+        const parsedLatLon = parseLatLon(data)
+        if (parsedLatLon.parsed) {
+            const { lat, lon } = parsedLatLon
+            const { text: latText, can: latCan } = getLatLonTextCan(lat, ['N', 'S']);
+            const { text: lonText, can: lonCan } = getLatLonTextCan(lon, ['E', 'W']);
+            const inputCoordParsed = { 
+                tech: {lat, lon}, 
+                human: {lat: latText, lon: lonText}, 
+                can: {lat: latCan, lon: lonCan},
+            }
+            state = { ...state, inputCoord:data, inputCoordParsed, inputCoordParsedError: null }
+        } else {
+            const { message } = parsedLatLon
+            state = { ...state, inputCoord:data, inputCoordParsed: null, inputCoordParsedError: message }
+        }
+        return state
+    },
+    [IMPORT_INPUT_COORD]: (state) => {
+        if (state.inputCoordParsed) {
+            const {lat, lon} = state.inputCoordParsed.tech
+            state = impactLatLonChange({ ...state, lat, lon, inputCoordWindowOpened: false });
         }
         return state
     },

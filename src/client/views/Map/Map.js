@@ -1,8 +1,8 @@
 import React, { createRef } from 'react';
 import { Map as LeafMap, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
-import mapData from '../mapData'
 
 import './Map.css';
+import { getMapInfo } from '../../utils/mapData';
 
 const lastImpose = {
     lat: null,
@@ -22,21 +22,11 @@ const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, geohash, onC
 
     const addressToDisplay = address || '...'
 
-    if (mapData[style]) {
+    const dataInfo = getMapInfo(style)
 
-        let attribution = '&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
-        const url = mapData[style].url;
-        const rights = mapData[style].rights;
-        if (rights) {
-            if (rights.noosm) {
-                attribution = `<a href="${rights.url}">${rights.name}</a>`;
-            } else {
-                attribution = `${attribution} | <a href="${rights.url}">${rights.name}</a>`;
-            }
-            if (rights.license) {
-                attribution = `${attribution} (<a href="${rights.license.url}">${rights.license.name}</a>))`;
-            }
-        }
+    if (dataInfo) {
+        const { url, attribution } = dataInfo
+
         const onMoveEnd = (e) => {
             const time = (new Date()).getTime()
             if (time - lastImpose.time >= 800) {
