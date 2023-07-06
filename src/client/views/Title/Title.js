@@ -11,7 +11,7 @@ import './Title.css'
  * @param {string} params.address
  */
 const Title = ({ nlat, nlon, latText, lonText, address }) => {
-    let title = `Geo (${nlat}, ${nlon}) - ${lonText} - ${latText}`
+    let title = `Geo (${nlat}, ${nlon}) - ${latText} ${lonText}`
     if (address) {
         title = `${title} - ${address}`
     }
