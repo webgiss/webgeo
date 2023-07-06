@@ -13,6 +13,11 @@ const dummyState = {
     useMilliGraticule: false,
     popupStatus: false,
     aboutWindowOpened: false,
+    inputCoordWindowOpened: false,
+    inputCoord: '',
+    inputCoordParsed: null,
+    inputCoordParsedError: null,
+    inputCoordZoom: 14,
 }
 
 describe(`geomap reducer`, () => {
@@ -22,6 +27,7 @@ describe(`geomap reducer`, () => {
         ).toEqual([
             'lat', 'lon', 'zoom', 'geohash', 'style', 'address', 'addrcoord',
             'marks', 'addresses', 'useMilliGraticule', 'popupStatus', 'aboutWindowOpened',
+            'inputCoordWindowOpened', 'inputCoord', 'inputCoordParsed', 'inputCoordParsedError', 'inputCoordZoom',
             'nlat', 'nlon', 'latText', 'lonText', 'latCan', 'lonCan'
         ])
     )
@@ -67,6 +73,11 @@ describe(`geomap reducer`, () => {
                     useMilliGraticule: false,
                     popupStatus: false,
                     aboutWindowOpened: false,
+                    inputCoordWindowOpened: false,
+                    inputCoord: '',
+                    inputCoordParsed: null,
+                    inputCoordParsedError: null,
+                    inputCoordZoom: 14,
                 }
             )
         })
@@ -125,6 +136,11 @@ describe(`geomap reducer`, () => {
                     useMilliGraticule: false,
                     popupStatus: false,
                     aboutWindowOpened: false,
+                    inputCoordWindowOpened: false,
+                    inputCoord: '',
+                    inputCoordParsed: null,
+                    inputCoordParsedError: null,
+                    inputCoordZoom: 14,
                 }
             )
         })
@@ -144,6 +160,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: false,
                 popupStatus: false,
                 aboutWindowOpened: false,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
     })
@@ -162,6 +183,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: false,
                 popupStatus: false,
                 aboutWindowOpened: false,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
     })
@@ -227,6 +253,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: false,
                 popupStatus: false,
                 aboutWindowOpened: false,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
         it(`should be able to modify only the style`, async () => {
@@ -252,6 +283,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: false,
                 popupStatus: false,
                 aboutWindowOpened: false,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
         it(`should be able to modify only the zoom`, async () => {
@@ -269,6 +305,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: false,
                 popupStatus: false,
                 aboutWindowOpened: false,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
         it(`should be able to modify only the lat`, async () => {
@@ -310,6 +351,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: false,
                 popupStatus: false,
                 aboutWindowOpened: false,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
         it(`should be able to modify only the lon`, async () => {
@@ -351,6 +397,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: false,
                 popupStatus: false,
                 aboutWindowOpened: false,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
         it(`should change lat and lon with geohash`, async () => {
@@ -392,6 +443,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: false,
                 popupStatus: false,
                 aboutWindowOpened: false,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
         it(`should set lat lon based on human readable string`, async () => {
@@ -433,6 +489,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: false,
                 popupStatus: false,
                 aboutWindowOpened: false,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
         it(`should not change anything with no params`, async () => {
@@ -456,6 +517,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: true,
                 popupStatus: false,
                 aboutWindowOpened: false,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
     })
@@ -475,6 +541,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: false,
                 popupStatus: true,
                 aboutWindowOpened: false,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
     })
@@ -494,6 +565,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: false,
                 popupStatus: false,
                 aboutWindowOpened: true,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
     })
@@ -513,6 +589,11 @@ describe(`geomap reducer`, () => {
                 useMilliGraticule: false,
                 popupStatus: false,
                 aboutWindowOpened: false,
+                inputCoordWindowOpened: false,
+                inputCoord: '',
+                inputCoordParsed: null,
+                inputCoordParsedError: null,
+                inputCoordZoom: 14,
             })
         })
     })
