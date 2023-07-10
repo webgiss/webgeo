@@ -16,13 +16,14 @@ const {createEFloat, createFFloat, createInteger, createDegree, createMinute, cr
 ","                                         {return 'SEP'}
 "-"                                         {return 'SEP'}
 [°hd]                                       {return 'DEGREE'}
-[’'m]                                       {return 'MINUTE'}
-[”\"s]                                      {return 'SECOND'}
+[’′'m]                                      {return 'MINUTE'}
+[”″\"s]                                     {return 'SECOND'}
 [N]                                         {return 'NORTH'}
 [E]                                         {return 'EAST'}
 [OW]                                        {return 'WEST'}
 [S]                                         {return 'SOUTH'}
 ":"                                         {return 'HOURSEP'}
+","                                         {return 'SEP'}
 <<EOF>>                                     {return 'EOF'}
 .                                           {return 'INVALID'}
 
