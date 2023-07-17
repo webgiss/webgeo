@@ -36,7 +36,16 @@ describe('parseLatLon', () => {
         { data: '5d16m30sN 6d16m30sW', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: -6.275 } },
         { data: '5°16’30”N 6°16’30”W', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: -6.275 } },
         { data: '5°16’30”N\n6°16’30”W', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: -6.275 } },
+        { data: '5d16m30sS6d16m30sE', expected: { parsed: true, error: false, status: OK, lat: -5.275, lon: 6.275 } },
+        { data: '5d16m30ss6d16m30se', expected: { parsed: true, error: false, status: OK, lat: -5.275, lon: 6.275 } },
         { data: '5 ° 16 \' 30 " N 6 ° 16 \' 30 " W', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: -6.275 } },
+        { data: '5 ° 16 \' 30 " North 6 ° 16 \' 30 " West', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: -6.275 } },
+        { data: '5 ° 16 \' 30 " north 6 ° 16 \' 30 " west', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: -6.275 } },
+        { data: '5 ° 16 \' 30 " Nord 6 ° 16 \' 30 " Ouest', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: -6.275 } },
+        { data: '5 ° 16 \' 30 " nord 6 ° 16 \' 30 " ouest', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: -6.275 } },
+        { data: '5 ° 16 \' 30 " Sud 6 ° 16 \' 30 " Est', expected: { parsed: true, error: false, status: OK, lat: -5.275, lon: 6.275 } },
+        { data: '5 ° 16 \' 30 " sud 6 ° 16 \' 30 " est', expected: { parsed: true, error: false, status: OK, lat: -5.275, lon: 6.275 } },
+        { data: '5 ° 16 \' 30 " s 6 ° 16 \' 30 " e', expected: { parsed: true, error: false, status: OK, lat: -5.275, lon: 6.275 } },
         { data: '5 ° 16 \' 30 " P 6 ° 16 \' 30 " W', expected: { parsed: false, error: true, status: SYNTAX_ERROR, message: "Don't understand [5 ° 16 ' 30 \" P 6 ° 16 ' 30 \" W]" } },
     ]
     for (const testData of testDataSet) {

@@ -38,7 +38,7 @@ const {createEFloat, createFFloat, createInteger, createDegree, createMinute, cr
 [Ee]                                        {return 'EAST'}
 [OWow]                                      {return 'WEST'}
 [S]                                         {return 'SOUTH'}
-"s"                                         {return 'SOUTH_OR_SECOND'}
+[s]                                         {return 'SOUTH_OR_SECOND'}
 ":"                                         {return 'HOURSEP'}
 ","                                         {return 'SEP'}
 <<EOF>>                                     {return 'EOF'}
