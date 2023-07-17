@@ -15,13 +15,30 @@ const {createEFloat, createFFloat, createInteger, createDegree, createMinute, cr
 "-"?[0-9]+                                  {return 'INTEGER'}
 ","                                         {return 'SEP'}
 "-"                                         {return 'SEP'}
+"North"                                     {return 'NORTH'}
+"north"                                     {return 'NORTH'}
+"Nord"                                      {return 'NORTH'}
+"nord"                                      {return 'NORTH'}
+"East"                                      {return 'EAST'}
+"east"                                      {return 'EAST'}
+"Est"                                       {return 'EAST'}
+"est"                                       {return 'EAST'}
+"West"                                      {return 'WEST'}
+"west"                                      {return 'WEST'}
+"Ouest"                                     {return 'WEST'}
+"ouest"                                     {return 'WEST'}
+"South"                                     {return 'SOUTH'}
+"south"                                     {return 'SOUTH'}
+"Sud"                                       {return 'SOUTH'}
+"sud"                                       {return 'SOUTH'}
 [°hd]                                       {return 'DEGREE'}
 [’′'m]                                      {return 'MINUTE'}
-[”″\"s]                                     {return 'SECOND'}
-[N]                                         {return 'NORTH'}
-[E]                                         {return 'EAST'}
-[OW]                                        {return 'WEST'}
+[”″\"]                                      {return 'SECOND'}
+[Nn]                                        {return 'NORTH'}
+[Ee]                                        {return 'EAST'}
+[OWow]                                      {return 'WEST'}
 [S]                                         {return 'SOUTH'}
+"s"                                         {return 'SOUTH_OR_SECOND'}
 ":"                                         {return 'HOURSEP'}
 ","                                         {return 'SEP'}
 <<EOF>>                                     {return 'EOF'}
@@ -82,12 +99,16 @@ minutevalue
 secondvalue
     : number SECOND
         { $$ = createSecond($1) }
+    | number SOUTH_OR_SECOND
+        { $$ = createSecond($1) }
     ;
 
 latdir
     : NORTH
         { $$ = 1 }
     | SOUTH
+        { $$ = -1 }
+    | SOUTH_OR_SECOND
         { $$ = -1 }
     ;
 
