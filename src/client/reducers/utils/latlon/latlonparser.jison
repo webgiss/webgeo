@@ -1,5 +1,5 @@
 %{
-const {createEFloat, createFFloat, createInteger, createDegree, createMinute, createSecond, createLat, createLon, createCoord} = require('./objects.js')
+const {createEFloat, createFFloat, createInteger, createDegree, createMinute, createSecond, createLat, createLon, createCoord, createGeohash} = require('./objects.js')
 %}
 
 %lex
@@ -8,6 +8,7 @@ const {createEFloat, createFFloat, createInteger, createDegree, createMinute, cr
 \n                                          {}
 \s+                                         {}
 \t                                          {}
+"["[0-9b-hjkmnp-zB-HJKMNP-Z]+"]"            {return 'GEOHASH'}
 "/"                                         {return 'SEP'}
 ";"                                         {return 'SEP'}
 "-"?[0-9]+"."[0-9]+                         {return 'EFLOAT'}
@@ -70,6 +71,8 @@ coord
         { $$ = createCoord(createLat(createDegree($1),0,0,1),createLon(createDegree($2),0,0,1)) }
     | number SEP number
         { $$ = createCoord(createLat(createDegree($1),0,0,1),createLon(createDegree($3),0,0,1)) }
+    | GEOHASH
+        { $$ = createGeohash(yytext.slice(1,yytext.length-1)) }
     ;
 
 float

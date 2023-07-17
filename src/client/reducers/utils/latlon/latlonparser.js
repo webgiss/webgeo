@@ -73,12 +73,12 @@
   }
 */
 var latlonparser = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,9],$V1=[1,10],$V2=[1,8],$V3=[1,25],$V4=[1,28],$V5=[1,26],$V6=[1,27],$V7=[1,29],$V8=[1,30],$V9=[5,8,11,12,13,15,17,19,20,22,23,25,26,27],$Va=[5,8,11,12,13],$Vb=[11,12,13,20,22,23,25,26],$Vc=[20,22,23,25,26];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,10],$V1=[1,11],$V2=[1,9],$V3=[1,26],$V4=[1,29],$V5=[1,27],$V6=[1,28],$V7=[1,30],$V8=[1,31],$V9=[5,8,12,13,14,16,18,20,21,23,24,26,27,28],$Va=[5,8,12,13,14],$Vb=[12,13,14,21,23,24,26,27],$Vc=[21,23,24,26,27];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"expression":3,"coord":4,"EOF":5,"lat":6,"lon":7,"SEP":8,"number":9,"float":10,"EFLOAT":11,"FFLOAT":12,"INTEGER":13,"degreevalue":14,"DEGREE":15,"minutevalue":16,"MINUTE":17,"secondvalue":18,"SECOND":19,"SOUTH_OR_SECOND":20,"latdir":21,"NORTH":22,"SOUTH":23,"londir":24,"EAST":25,"WEST":26,"HOURSEP":27,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",8:"SEP",11:"EFLOAT",12:"FFLOAT",13:"INTEGER",15:"DEGREE",17:"MINUTE",19:"SECOND",20:"SOUTH_OR_SECOND",22:"NORTH",23:"SOUTH",25:"EAST",26:"WEST",27:"HOURSEP"},
-productions_: [0,[3,2],[4,2],[4,3],[4,2],[4,3],[4,2],[4,3],[10,1],[10,1],[9,1],[9,1],[14,2],[16,2],[18,2],[18,2],[21,1],[21,1],[21,1],[24,1],[24,1],[6,4],[6,3],[6,2],[6,6],[6,4],[6,2],[7,4],[7,3],[7,2],[7,6],[7,4],[7,2]],
+symbols_: {"error":2,"expression":3,"coord":4,"EOF":5,"lat":6,"lon":7,"SEP":8,"number":9,"GEOHASH":10,"float":11,"EFLOAT":12,"FFLOAT":13,"INTEGER":14,"degreevalue":15,"DEGREE":16,"minutevalue":17,"MINUTE":18,"secondvalue":19,"SECOND":20,"SOUTH_OR_SECOND":21,"latdir":22,"NORTH":23,"SOUTH":24,"londir":25,"EAST":26,"WEST":27,"HOURSEP":28,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",8:"SEP",10:"GEOHASH",12:"EFLOAT",13:"FFLOAT",14:"INTEGER",16:"DEGREE",18:"MINUTE",20:"SECOND",21:"SOUTH_OR_SECOND",23:"NORTH",24:"SOUTH",26:"EAST",27:"WEST",28:"HOURSEP"},
+productions_: [0,[3,2],[4,2],[4,3],[4,2],[4,3],[4,2],[4,3],[4,1],[11,1],[11,1],[9,1],[9,1],[15,2],[17,2],[19,2],[19,2],[22,1],[22,1],[22,1],[25,1],[25,1],[6,4],[6,3],[6,2],[6,6],[6,4],[6,2],[7,4],[7,3],[7,2],[7,6],[7,4],[7,2]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -108,72 +108,75 @@ case 7:
  this.$ = createCoord(createLat(createDegree($$[$0-2]),0,0,1),createLon(createDegree($$[$0]),0,0,1)) 
 break;
 case 8:
- this.$ = createEFloat(yytext) 
+ this.$ = createGeohash(yytext.slice(1,yytext.length-1)) 
 break;
 case 9:
- this.$ = createFFloat(yytext) 
+ this.$ = createEFloat(yytext) 
 break;
 case 10:
- this.$ = $$[$0] 
+ this.$ = createFFloat(yytext) 
 break;
 case 11:
- this.$ = createInteger(yytext) 
+ this.$ = $$[$0] 
 break;
 case 12:
- this.$ = createDegree($$[$0-1]) 
+ this.$ = createInteger(yytext) 
 break;
 case 13:
+ this.$ = createDegree($$[$0-1]) 
+break;
+case 14:
  this.$ = createMinute($$[$0-1]) 
 break;
-case 14: case 15:
+case 15: case 16:
  this.$ = createSecond($$[$0-1]) 
 break;
-case 16: case 19:
+case 17: case 20:
  this.$ = 1 
 break;
-case 17: case 18: case 20:
+case 18: case 19: case 21:
  this.$ = -1 
 break;
-case 21:
+case 22:
  this.$ = createLat($$[$0-3],$$[$0-2],$$[$0-1],$$[$0]) 
 break;
-case 22:
+case 23:
  this.$ = createLat($$[$0-2],$$[$0-1],0,$$[$0]) 
 break;
-case 23:
+case 24:
  this.$ = createLat($$[$0-1],0,0,$$[$0]) 
 break;
-case 24:
+case 25:
  this.$ = createLat(createDegree($$[$0-5]),createMinute($$[$0-3]),createSecond($$[$0-1]),$$[$0]) 
 break;
-case 25:
+case 26:
  this.$ = createLat(createDegree($$[$0-3]),createMinute($$[$0-1]),0,$$[$0]) 
 break;
-case 26:
+case 27:
  this.$ = createLat(createDegree($$[$0-1]),0,0, $$[$0]) 
 break;
-case 27:
+case 28:
  this.$ = createLon($$[$0-3],$$[$0-2],$$[$0-1],$$[$0]) 
 break;
-case 28:
+case 29:
  this.$ = createLon($$[$0-2],$$[$0-1],0,$$[$0]) 
 break;
-case 29:
+case 30:
  this.$ = createLon($$[$0-1],0,0,$$[$0]) 
 break;
-case 30:
+case 31:
  this.$ = createLon(createDegree($$[$0-5]),createMinute($$[$0-3]),createSecond($$[$0-1]),$$[$0]) 
 break;
-case 31:
+case 32:
  this.$ = createLon(createDegree($$[$0-3]),createMinute($$[$0-1]),0,$$[$0]) 
 break;
-case 32:
+case 33:
  this.$ = createLon(createDegree($$[$0-1]),0,0,$$[$0]) 
 break;
 }
 },
-table: [{3:1,4:2,6:3,7:4,9:5,10:7,11:$V0,12:$V1,13:$V2,14:6},{1:[3]},{5:[1,11]},{7:12,8:[1,13],9:15,10:7,11:$V0,12:$V1,13:$V2,14:14},{6:16,8:[1,17],9:19,10:7,11:$V0,12:$V1,13:$V2,14:18},{8:[1,21],9:20,10:7,11:$V0,12:$V1,13:$V2,15:$V3,20:$V4,21:23,22:$V5,23:$V6,24:24,25:$V7,26:$V8,27:[1,22]},{9:34,10:7,11:$V0,12:$V1,13:$V2,16:31,20:$V4,21:32,22:$V5,23:$V6,24:33,25:$V7,26:$V8},o($V9,[2,10]),o($V9,[2,11]),o($V9,[2,8]),o($V9,[2,9]),{1:[2,1]},{5:[2,2]},{7:35,9:15,10:7,11:$V0,12:$V1,13:$V2,14:14},{9:34,10:7,11:$V0,12:$V1,13:$V2,16:36,24:33,25:$V7,26:$V8},{15:$V3,24:24,25:$V7,26:$V8,27:[1,37]},{5:[2,4]},{6:38,9:19,10:7,11:$V0,12:$V1,13:$V2,14:18},{9:34,10:7,11:$V0,12:$V1,13:$V2,16:39,20:$V4,21:32,22:$V5,23:$V6},{15:$V3,20:$V4,21:23,22:$V5,23:$V6,27:[1,40]},{5:[2,6]},{9:41,10:7,11:$V0,12:$V1,13:$V2},{9:42,10:7,11:$V0,12:$V1,13:$V2},o($Va,[2,26]),o($Va,[2,32]),o($Vb,[2,12]),o($Va,[2,16]),o($Va,[2,17]),o($Va,[2,18]),o($Va,[2,19]),o($Va,[2,20]),{9:46,10:7,11:$V0,12:$V1,13:$V2,18:43,20:$V4,21:44,22:$V5,23:$V6,24:45,25:$V7,26:$V8},o($Va,[2,23]),o($Va,[2,29]),{17:[1,47]},{5:[2,3]},{9:46,10:7,11:$V0,12:$V1,13:$V2,18:48,24:45,25:$V7,26:$V8},{9:49,10:7,11:$V0,12:$V1,13:$V2},{5:[2,5]},{9:46,10:7,11:$V0,12:$V1,13:$V2,18:50,20:$V4,21:44,22:$V5,23:$V6},{9:51,10:7,11:$V0,12:$V1,13:$V2},{5:[2,7]},{20:$V4,21:53,22:$V5,23:$V6,24:54,25:$V7,26:$V8,27:[1,52]},{20:$V4,21:55,22:$V5,23:$V6,24:56,25:$V7,26:$V8},o($Va,[2,22]),o($Va,[2,28]),{19:[1,57],20:[1,58]},o($Vb,[2,13]),{24:56,25:$V7,26:$V8},{24:54,25:$V7,26:$V8,27:[1,59]},{20:$V4,21:55,22:$V5,23:$V6},{20:$V4,21:53,22:$V5,23:$V6,27:[1,60]},{9:61,10:7,11:$V0,12:$V1,13:$V2},o($Va,[2,25]),o($Va,[2,31]),o($Va,[2,21]),o($Va,[2,27]),o($Vc,[2,14]),o($Vc,[2,15]),{9:62,10:7,11:$V0,12:$V1,13:$V2},{9:63,10:7,11:$V0,12:$V1,13:$V2},{20:$V4,21:64,22:$V5,23:$V6,24:65,25:$V7,26:$V8},{24:65,25:$V7,26:$V8},{20:$V4,21:64,22:$V5,23:$V6},o($Va,[2,24]),o($Va,[2,30])],
-defaultActions: {11:[2,1],12:[2,2],16:[2,4],20:[2,6],35:[2,3],38:[2,5],41:[2,7]},
+table: [{3:1,4:2,6:3,7:4,9:5,10:[1,6],11:8,12:$V0,13:$V1,14:$V2,15:7},{1:[3]},{5:[1,12]},{7:13,8:[1,14],9:16,11:8,12:$V0,13:$V1,14:$V2,15:15},{6:17,8:[1,18],9:20,11:8,12:$V0,13:$V1,14:$V2,15:19},{8:[1,22],9:21,11:8,12:$V0,13:$V1,14:$V2,16:$V3,21:$V4,22:24,23:$V5,24:$V6,25:25,26:$V7,27:$V8,28:[1,23]},{5:[2,8]},{9:35,11:8,12:$V0,13:$V1,14:$V2,17:32,21:$V4,22:33,23:$V5,24:$V6,25:34,26:$V7,27:$V8},o($V9,[2,11]),o($V9,[2,12]),o($V9,[2,9]),o($V9,[2,10]),{1:[2,1]},{5:[2,2]},{7:36,9:16,11:8,12:$V0,13:$V1,14:$V2,15:15},{9:35,11:8,12:$V0,13:$V1,14:$V2,17:37,25:34,26:$V7,27:$V8},{16:$V3,25:25,26:$V7,27:$V8,28:[1,38]},{5:[2,4]},{6:39,9:20,11:8,12:$V0,13:$V1,14:$V2,15:19},{9:35,11:8,12:$V0,13:$V1,14:$V2,17:40,21:$V4,22:33,23:$V5,24:$V6},{16:$V3,21:$V4,22:24,23:$V5,24:$V6,28:[1,41]},{5:[2,6]},{9:42,11:8,12:$V0,13:$V1,14:$V2},{9:43,11:8,12:$V0,13:$V1,14:$V2},o($Va,[2,27]),o($Va,[2,33]),o($Vb,[2,13]),o($Va,[2,17]),o($Va,[2,18]),o($Va,[2,19]),o($Va,[2,20]),o($Va,[2,21]),{9:47,11:8,12:$V0,13:$V1,14:$V2,19:44,21:$V4,22:45,23:$V5,24:$V6,25:46,26:$V7,27:$V8},o($Va,[2,24]),o($Va,[2,30]),{18:[1,48]},{5:[2,3]},{9:47,11:8,12:$V0,13:$V1,14:$V2,19:49,25:46,26:$V7,27:$V8},{9:50,11:8,12:$V0,13:$V1,14:$V2},{5:[2,5]},{9:47,11:8,12:$V0,13:$V1,14:$V2,19:51,21:$V4,22:45,23:$V5,24:$V6},{9:52,11:8,12:$V0,13:$V1,14:$V2},{5:[2,7]},{21:$V4,22:54,23:$V5,24:$V6,25:55,26:$V7,27:$V8,28:[1,53]},{21:$V4,22:56,23:$V5,24:$V6,25:57,26:$V7,27:$V8},o($Va,[2,23]),o($Va,[2,29]),{20:[1,58],21:[1,59]},o($Vb,[2,14]),{25:57,26:$V7,27:$V8},{25:55,26:$V7,27:$V8,28:[1,60]},{21:$V4,22:56,23:$V5,24:$V6},{21:$V4,22:54,23:$V5,24:$V6,28:[1,61]},{9:62,11:8,12:$V0,13:$V1,14:$V2},o($Va,[2,26]),o($Va,[2,32]),o($Va,[2,22]),o($Va,[2,28]),o($Vc,[2,15]),o($Vc,[2,16]),{9:63,11:8,12:$V0,13:$V1,14:$V2},{9:64,11:8,12:$V0,13:$V1,14:$V2},{21:$V4,22:65,23:$V5,24:$V6,25:66,26:$V7,27:$V8},{25:66,26:$V7,27:$V8},{21:$V4,22:65,23:$V5,24:$V6},o($Va,[2,25]),o($Va,[2,31])],
+defaultActions: {6:[2,8],12:[2,1],13:[2,2],17:[2,4],21:[2,6],36:[2,3],39:[2,5],42:[2,7]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -321,7 +324,7 @@ parse: function parse(input) {
     return true;
 }};
 
-const {createEFloat, createFFloat, createInteger, createDegree, createMinute, createSecond, createLat, createLon, createCoord} = require('./objects.js')
+const {createEFloat, createFFloat, createInteger, createDegree, createMinute, createSecond, createLat, createLon, createCoord, createGeohash} = require('./objects.js')
 /* generated by jison-lex 0.3.4 */
 var lexer = (function(){
 var lexer = ({
@@ -656,80 +659,82 @@ case 1:
 break;
 case 2:
 break;
-case 3:return 8
+case 3:return 10
 break;
 case 4:return 8
 break;
-case 5:return 11
+case 5:return 8
 break;
 case 6:return 12
 break;
 case 7:return 13
 break;
-case 8:return 8
+case 8:return 14
 break;
 case 9:return 8
 break;
-case 10:return 22
+case 10:return 8
 break;
-case 11:return 22
+case 11:return 23
 break;
-case 12:return 22
+case 12:return 23
 break;
-case 13:return 22
+case 13:return 23
 break;
-case 14:return 25
+case 14:return 23
 break;
-case 15:return 25
+case 15:return 26
 break;
-case 16:return 25
+case 16:return 26
 break;
-case 17:return 25
+case 17:return 26
 break;
 case 18:return 26
 break;
-case 19:return 26
+case 19:return 27
 break;
-case 20:return 26
+case 20:return 27
 break;
-case 21:return 26
+case 21:return 27
 break;
-case 22:return 23
+case 22:return 27
 break;
-case 23:return 23
+case 23:return 24
 break;
-case 24:return 23
+case 24:return 24
 break;
-case 25:return 23
+case 25:return 24
 break;
-case 26:return 15
+case 26:return 24
 break;
-case 27:return 17
+case 27:return 16
 break;
-case 28:return 19
+case 28:return 18
 break;
-case 29:return 22
+case 29:return 20
 break;
-case 30:return 25
+case 30:return 23
 break;
 case 31:return 26
 break;
-case 32:return 23
+case 32:return 27
 break;
-case 33:return 20
+case 33:return 24
 break;
-case 34:return 27
+case 34:return 21
 break;
-case 35:return 8
+case 35:return 28
 break;
-case 36:return 5
+case 36:return 8
 break;
-case 37:return 'INVALID'
+case 37:return 5
+break;
+case 38:return 'INVALID'
 break;
 }
 },
-rules: [/^(?:\n)/,/^(?:\s+)/,/^(?:\t)/,/^(?:\/)/,/^(?:;)/,/^(?:-?[0-9]+\.[0-9]+)/,/^(?:-?[0-9]+,[0-9]+)/,/^(?:-?[0-9]+)/,/^(?:,)/,/^(?:-)/,/^(?:North\b)/,/^(?:north\b)/,/^(?:Nord\b)/,/^(?:nord\b)/,/^(?:East\b)/,/^(?:east\b)/,/^(?:Est\b)/,/^(?:est\b)/,/^(?:West\b)/,/^(?:west\b)/,/^(?:Ouest\b)/,/^(?:ouest\b)/,/^(?:South\b)/,/^(?:south\b)/,/^(?:Sud\b)/,/^(?:sud\b)/,/^(?:[°hd])/,/^(?:[’′'m])/,/^(?:[”″\"])/,/^(?:[Nn])/,/^(?:[Ee])/,/^(?:[OWow])/,/^(?:[S])/,/^(?:[s])/,/^(?::)/,/^(?:,)/,/^(?:$)/,/^(?:.)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37],"inclusive":true}}
+rules: [/^(?:\n)/,/^(?:\s+)/,/^(?:\t)/,/^(?:\[[0-9b-hjkmnp-zB-HJKMNP-Z]+\])/,/^(?:\/)/,/^(?:;)/,/^(?:-?[0-9]+\.[0-9]+)/,/^(?:-?[0-9]+,[0-9]+)/,/^(?:-?[0-9]+)/,/^(?:,)/,/^(?:-)/,/^(?:North\b)/,/^(?:north\b)/,/^(?:Nord\b)/,/^(?:nord\b)/,/^(?:East\b)/,/^(?:east\b)/,/^(?:Est\b)/,/^(?:est\b)/,/^(?:West\b)/,/^(?:west\b)/,/^(?:Ouest\b)/,/^(?:ouest\b)/,/^(?:South\b)/,/^(?:south\b)/,/^(?:Sud\b)/,/^(?:sud\b)/,/^(?:[°hd])/,/^(?:[’′'m])/,/^(?:[”″\"])/,/^(?:[Nn])/,/^(?:[Ee])/,/^(?:[OWow])/,/^(?:[S])/,/^(?:[s])/,/^(?::)/,/^(?:,)/,/^(?:$)/,/^(?:.)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38],"inclusive":true}}
 });
 return lexer;
 })();

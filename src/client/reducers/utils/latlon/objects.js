@@ -1,3 +1,5 @@
+import Geohash from '../../../utils/Geohash'
+
 export const createEFloat = (data) => parseFloat(data)
 
 export const createFFloat = (data) => parseFloat(data.replace(',', '.'))
@@ -16,3 +18,5 @@ export const createLat = createLatOrLon
 export const createLon = createLatOrLon
 
 export const createCoord = (lat, lon) => ({ lat, lon })
+
+export const createGeohash = (geohash) => Geohash.decode(geohash)

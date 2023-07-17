@@ -21,6 +21,7 @@ const CoordInputWindow = ({ open, inputCoord, hasCoord, parsingInfo, previewZoom
                 <li>Human readable format ( ex: <b className='CoordInputWindowExample'>52° 54' 48.88" N 4° 05' 56.96" W</b> or <b className='CoordInputWindowExample'>52 h 54 m 48.88 s N 4 h 05 m 56.96 s W</b> )</li>
                 <li>Google format ( ex: <b className='CoordInputWindowExample'>52.91357988714921,-4.099155664443971</b> )</li>
                 <li>OSM format ( ex: <b className='CoordInputWindowExample'>52.91357988714921/-4.099155664443971</b> )</li>
+                <li>geohash format ( ex: <b className='CoordInputWindowExample'>[gcmj48x5fvb4]</b> )</li>
             </ul>
             <textarea 
                 className='CoordInputWindowTextarea' 

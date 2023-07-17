@@ -23,6 +23,9 @@ describe('parseLatLon', () => {
         { data: '6:16:30 E 5:16:30 N', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: 6.275 } },
         { data: '5.275,6.275', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: 6.275 } },
         { data: '5.275/6.275', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: 6.275 } },
+        { data: '5,275 , 6,275', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: 6.275 } },
+        { data: '5,275,6,275', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: 6.275 } },
+        { data: '5,275/6,275', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: 6.275 } },
         { data: '5.275 - 6.275', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: 6.275 } },
         { data: '5.275 - -6.275', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: -6.275 } },
         { data: '5° 16\' 30s N 6 d 16m 30"W', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: -6.275 } },
@@ -45,6 +48,8 @@ describe('parseLatLon', () => {
         { data: '5 ° 16 \' 30 " nord 6 ° 16 \' 30 " ouest', expected: { parsed: true, error: false, status: OK, lat: 5.275, lon: -6.275 } },
         { data: '5 ° 16 \' 30 " Sud 6 ° 16 \' 30 " Est', expected: { parsed: true, error: false, status: OK, lat: -5.275, lon: 6.275 } },
         { data: '5 ° 16 \' 30 " sud 6 ° 16 \' 30 " est', expected: { parsed: true, error: false, status: OK, lat: -5.275, lon: 6.275 } },
+        { data: '[ebgw10q9jgkb]', expected: { parsed: true, error: false, status: OK, lat: 5.27499997, lon: -6.27499999 } },
+        { data: '[gcmj48x5fvb4]', expected: { parsed: true, error: false, status: OK, lat: 52.91357783, lon: -4.0991555 } },
         { data: '5 ° 16 \' 30 " s 6 ° 16 \' 30 " e', expected: { parsed: true, error: false, status: OK, lat: -5.275, lon: 6.275 } },
         { data: '5 ° 16 \' 30 " P 6 ° 16 \' 30 " W', expected: { parsed: false, error: true, status: SYNTAX_ERROR, message: "Don't understand [5 ° 16 ' 30 \" P 6 ° 16 ' 30 \" W]" } },
     ]
