@@ -1,0 +1,205 @@
+<html><head><meta charset="utf-8"/><title>Test Report</title><style type="text/css">html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+body {
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+}
+#jesthtml-content {
+  margin: 0 auto;
+  max-width: 70rem;
+}
+header {
+  display: flex;
+  align-items: center;
+}
+#title {
+  margin: 0;
+  flex-grow: 1;
+}
+#logo {
+  height: 4rem;
+}
+#timestamp {
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+/** SUMMARY */
+#summary {
+  color: #333;
+  margin: 2rem 0;
+  display: flex;
+  font-family: monospace;
+  font-size: 1rem;
+}
+#summary > div {
+  margin-right: 2rem;
+  background: #eee;
+  padding: 1rem;
+  min-width: 15rem;
+}
+#summary > div:last-child {
+  margin-right: 0;
+}
+@media only screen and (max-width: 720px) {
+  #summary {
+    flex-direction: column;
+  }
+  #summary > div {
+    margin-right: 0;
+    margin-top: 2rem;
+  }
+  #summary > div:first-child {
+    margin-top: 0;
+  }
+}
+
+.summary-total {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.summary-passed {
+  color: #4f8a10;
+  border-left: 0.4rem solid #4f8a10;
+  padding-left: 0.5rem;
+}
+.summary-failed {
+  color: #d8000c;
+  border-left: 0.4rem solid #d8000c;
+  padding-left: 0.5rem;
+}
+.summary-pending {
+  color: #9f6000;
+  border-left: 0.4rem solid #9f6000;
+  padding-left: 0.5rem;
+}
+.summary-empty {
+  color: #999;
+  border-left: 0.4rem solid #999;
+}
+
+.test-result {
+  padding: 1rem;
+  margin-bottom: 0.25rem;
+}
+.test-result:last-child {
+  border: 0;
+}
+.test-result.passed {
+  background-color: #dff2bf;
+  color: #4f8a10;
+}
+.test-result.failed {
+  background-color: #ffbaba;
+  color: #d8000c;
+}
+.test-result.pending {
+  background-color: #ffdf61;
+  color: #9f6000;
+}
+
+.test-info {
+  display: flex;
+  justify-content: space-between;
+}
+.test-suitename {
+  width: 20%;
+  text-align: left;
+  font-weight: bold;
+  word-break: break-word;
+}
+.test-title {
+  width: 40%;
+  text-align: left;
+  font-style: italic;
+}
+.test-status {
+  width: 20%;
+  text-align: right;
+}
+.test-duration {
+  width: 10%;
+  text-align: right;
+  font-size: 0.75rem;
+}
+
+.failureMessages {
+  padding: 0 1rem;
+  margin-top: 1rem;
+  border-top: 1px dashed #d8000c;
+}
+.failureMessages.suiteFailure {
+  border-top: none;
+}
+.failureMsg {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.suite-container {
+  margin-bottom: 2rem;
+}
+.suite-info {
+  padding: 1rem;
+  background-color: #eee;
+  color: #777;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+.suite-info .suite-path {
+  word-break: break-all;
+  flex-grow: 1;
+  font-family: monospace;
+  font-size: 1rem;
+}
+.suite-info .suite-time {
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.3rem;
+  font-size: 0.75rem;
+}
+.suite-info .suite-time.warn {
+  background-color: #d8000c;
+  color: #fff;
+}
+
+/* CONSOLE LOGS */
+.suite-consolelog {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #efefef;
+}
+.suite-consolelog-header {
+  font-weight: bold;
+}
+.suite-consolelog-item {
+  padding: 0.5rem;
+}
+.suite-consolelog-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-consolelog-item-origin {
+  color: #777;
+  font-weight: bold;
+}
+.suite-consolelog-item-message {
+  color: #000;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+</style></head><body><div id="jesthtml-content"><header><h1 id="title">Test Report</h1></header><div id="metadata-container"><div id="timestamp">Started: 2023-07-17 22:21:29</div><div id="summary"><div id="suite-summary"><div class="summary-total">Suites (4)</div><div class="summary-passed">4 passed</div><div class="summary-failed summary-empty">0 failed</div><div class="summary-pending summary-empty">0 pending</div></div><div id="test-summary"><div class="summary-total">Tests (90)</div><div class="summary-passed">90 passed</div><div class="summary-failed summary-empty">0 failed</div><div class="summary-pending summary-empty">0 pending</div></div></div></div><div id="suite-1" class="suite-container"><div class="suite-info"><div class="suite-path">/home/runner/work/webgeo/webgeo/src/client/reducers/geomap.test.js</div><div class="suite-time">2.024s</div></div><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer</div><div class="test-title">should initialize an empty state</div><div class="test-status">passed</div><div class="test-duration">0.004s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; SET_COORD action</div><div class="test-title">should set lat lon in state</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; SET_COORD action</div><div class="test-title">should set lat lon in state and use address cache when available</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; SET_ZOOM action</div><div class="test-title">should set zoom in state</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; SET_STYLE action</div><div class="test-title">should set style in state</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; LOCATION_CHANGE action</div><div class="test-title">should modify all properties</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; LOCATION_CHANGE action</div><div class="test-title">should be able to modify only the style</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; LOCATION_CHANGE action</div><div class="test-title">should be able to modify only the zoom</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; LOCATION_CHANGE action</div><div class="test-title">should be able to modify only the lat</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; LOCATION_CHANGE action</div><div class="test-title">should be able to modify only the lon</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; LOCATION_CHANGE action</div><div class="test-title">should change lat and lon with geohash</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; LOCATION_CHANGE action</div><div class="test-title">should set lat lon based on human readable string</div><div class="test-status">passed</div><div class="test-duration">0.005s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; LOCATION_CHANGE action</div><div class="test-title">should not change anything with no params</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; USE_MILLIGRATICULE action</div><div class="test-title">should set useMilliGraticule is state</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; SET_POPUP_STATUS action</div><div class="test-title">should set popupStatus is state</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; OPEN_ABOUT_WINDOW action</div><div class="test-title">should set aboutWindowOpened is state</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">geomap reducer &gt; CLOSE_ABOUT_WINDOW action</div><div class="test-title">should set aboutWindowOpened is state</div><div class="test-status">passed</div><div class="test-duration">0.006s</div></div></div></div></div><div id="suite-2" class="suite-container"><div class="suite-info"><div class="suite-path">/home/runner/work/webgeo/webgeo/src/client/reducers/utils/latlon/latlon.test.js</div><div class="suite-time">0.326s</div></div><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure with a status [OK] when provided with []</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure with a status [OK] when provided with [    ]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure with a status [OK] when provided with [	]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure with a status [OK] when provided with [    	  ]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[0] lon=[0] when provided with [0N 0E]</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[0] lon=[0] when provided with [0/0]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[0] lon=[0] when provided with [0 N 0 W]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5] lon=[-6] when provided with [5 N 6 W]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[-5] lon=[-6] when provided with [5 S 6 W]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[-5] lon=[-6] when provided with [-5/-6]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[-5] lon=[-6] when provided with [-5 / -6]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.25] lon=[6.25] when provided with [5.25 N 6.25 E]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.25] lon=[6.25] when provided with [5:15 N 6:15 E]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.25] lon=[6.25] when provided with [5:15:00 N 6:15:00 E]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[-5.25] lon=[-6.25] when provided with [5:15:00 S 6:15:00 W]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[-5.275] lon=[-6.275] when provided with [5:16:30 S 6:16:30 W]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[-5.275] lon=[-6.275] when provided with [6:16:30 W 5:16:30 S]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[-5.275] lon=[6.275] when provided with [6:16:30 E 5:16:30 S]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[6.275] when provided with [6:16:30 E 5:16:30 N]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[6.275] when provided with [5.275,6.275]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[6.275] when provided with [5.275/6.275]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[6.275] when provided with [5,275 , 6,275]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[6.275] when provided with [5,275,6,275]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[6.275] when provided with [5,275/6,275]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[6.275] when provided with [5.275 - 6.275]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5.275 - -6.275]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5° 16' 30s N 6 d 16m 30"W]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5°16'30"N6°16'30"W]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5°16'30"N 6°16'30"W]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5°16'30" N 6°16'30" W]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5° 16' 30" N 6° 16' 30" W]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5d 16m 30s N 6d 16m 30s W]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5d16m30sN6d16m30sW]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5°16’30”N6°16’30”W]</div><div class="test-status">passed</div><div class="test-duration">0.009s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5d16m30sN 6d16m30sW]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5°16’30”N 6°16’30”W]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5°16’30”N
+6°16’30”W]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[-5.275] lon=[6.275] when provided with [5d16m30sS6d16m30sE]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[-5.275] lon=[6.275] when provided with [5d16m30ss6d16m30se]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5 ° 16 ' 30 " N 6 ° 16 ' 30 " W]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5 ° 16 ' 30 " North 6 ° 16 ' 30 " West]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5 ° 16 ' 30 " north 6 ° 16 ' 30 " west]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5 ° 16 ' 30 " Nord 6 ° 16 ' 30 " Ouest]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.275] lon=[-6.275] when provided with [5 ° 16 ' 30 " nord 6 ° 16 ' 30 " ouest]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[-5.275] lon=[6.275] when provided with [5 ° 16 ' 30 " Sud 6 ° 16 ' 30 " Est]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[-5.275] lon=[6.275] when provided with [5 ° 16 ' 30 " sud 6 ° 16 ' 30 " est]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[5.27499997] lon=[-6.27499999] when provided with [[ebgw10q9jgkb]]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[52.91357783] lon=[-4.0991555] when provided with [[gcmj48x5fvb4]]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure containing lat=[-5.275] lon=[6.275] when provided with [5 ° 16 ' 30 " s 6 ° 16 ' 30 " e]</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">parseLatLon</div><div class="test-title">should return a structure with a status [SYNTAX_ERROR] when provided with [5 ° 16 ' 30 " P 6 ° 16 ' 30 " W]</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div></div></div><div id="suite-3" class="suite-container"><div class="suite-info"><div class="suite-path">/home/runner/work/webgeo/webgeo/src/client/actions/geomap.test.js</div><div class="suite-time">0.338s</div></div><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">setCoord</div><div class="test-title">should generate an action SET_COORD for (1,1)</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setCoord</div><div class="test-title">should generate an action SET_COORD for (1.1,3.1)</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setCoord</div><div class="test-title">should generate an action SET_COORD for (-1.1,3.1)</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setCoord</div><div class="test-title">should generate an action SET_COORD for (1.1,-3.1)</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setCoord</div><div class="test-title">should generate an action SET_COORD for (-1.1,-3.1)</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setZoom</div><div class="test-title">should generate an action SET_ZOOM for 0</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setZoom</div><div class="test-title">should generate an action SET_ZOOM for 1</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setZoom</div><div class="test-title">should generate an action SET_ZOOM for 12</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setZoom</div><div class="test-title">should generate an action SET_ZOOM for 18</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setZoom</div><div class="test-title">should generate an action SET_ZOOM for 19</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setStyle</div><div class="test-title">should generate an action SET_STYLE for org</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setStyle</div><div class="test-title">should generate an action SET_STYLE for de</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setStyle</div><div class="test-title">should generate an action SET_STYLE for fr</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">setStyle</div><div class="test-title">should generate an action SET_STYLE for grut</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">needAddress</div><div class="test-title">should return an address for (1.1,3.1)</div><div class="test-status">passed</div><div class="test-duration">0.002s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">needAddress</div><div class="test-title">should return an address for (1.7,3.7)</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">needAddress</div><div class="test-title">should not return an address for (1.1,3.7)</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div><div id="suite-4" class="suite-container"><div class="suite-info"><div class="suite-path">/home/runner/work/webgeo/webgeo/src/client/utils/Geohash.test.js</div><div class="suite-time">0.194s</div></div><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Geohash</div><div class="test-title">should correctly convert (48.785,2.454) to 'u09txc4cn'</div><div class="test-status">passed</div><div class="test-duration">0.003s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Geohash</div><div class="test-title">should correctly convert 'u09txc4cn' to be close to (48.785,2.454)</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Geohash</div><div class="test-title">should correctly convert (48.8583,2.2941) to 'u09tunq'</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Geohash</div><div class="test-title">should correctly convert 'u09tunq' to be close to (48.8583,2.2941)</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Geohash</div><div class="test-title">should correctly convert (37.7408,-122.448) to '9q8ytw'</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Geohash</div><div class="test-title">should correctly convert '9q8ytw' to be close to (37.7408,-122.448)</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div></div></div></div></body></html>
