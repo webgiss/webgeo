@@ -25,7 +25,7 @@ const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, geohash, onC
     const dataInfo = getMapInfo(style)
 
     if (dataInfo) {
-        const { url, attribution } = dataInfo
+        const { url, maxZoom, attribution } = dataInfo
 
         const onMoveEnd = (e) => {
             const time = (new Date()).getTime()
@@ -70,6 +70,8 @@ const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, geohash, onC
         return <div className='map'>
             <LeafMap
                 center={position}
+                maxZoom={25}
+                maxNativeZoom={maxZoom}
                 zoom={zoom}
                 ref={mapRef}
                 onMoveEnd={onMoveEnd}

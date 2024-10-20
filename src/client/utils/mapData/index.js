@@ -7,6 +7,7 @@ const getMapInfo = (style) => {
         // let attribution = '&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors';
         const url = mapData[style].url;
         const rightsList = mapData[style].rights;
+        const maxZoom = mapData[style].maxZoom;
         
         const attribution = `&copy ` + rightsList.map((rights) => {
             let attribution = getRightLink(rights)
@@ -16,7 +17,7 @@ const getMapInfo = (style) => {
             return attribution
         }).join(' | ')
 
-        return { url, attribution }
+        return { url, maxZoom, attribution }
     }
     return null
 }
