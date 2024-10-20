@@ -203,7 +203,7 @@ export default {
     GoogleStreet: {
         url: "http://mt0.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
         name: "Google",
-        maxZoom: 22,
+        maxZoom: 21,
         rights: [
             {
                 url: "http://maps.google.com/",
@@ -214,7 +214,7 @@ export default {
     GoogleHybrid: {
         url: "http://mt1.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}",
         name: "Google Hybrid",
-        maxZoom: 22,
+        maxZoom: 21,
         rights: [
             {
                 url: "http://maps.google.com/",
@@ -225,7 +225,7 @@ export default {
     GoogleSatellite: {
         url: "http://mt2.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
         name: "Google Satellite",
-        maxZoom: 22,
+        maxZoom: 21,
         rights: [
             {
                 url: "http://maps.google.com/",
