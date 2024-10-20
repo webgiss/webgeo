@@ -77,6 +77,7 @@ const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, geohash, onC
                 onClick={onClick}
             >
                 <TileLayer
+                    key={maxZoom}
                     attribution={attribution}
                     url={url}
                     maxZoom={25}
