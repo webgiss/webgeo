@@ -1,0 +1,117 @@
+.map {
+    position: absolute;
+    left: 150px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+}
+
+.mainPage {
+    background: rgb(238, 237, 228);
+    position: fixed;
+    top:2px;
+    bottom:2px;
+    left:2px;
+    right: 2px;
+}
+
+
+.Title {
+    position: relative;
+    height: 0px;
+    width: 100%;
+    background-color: rgb(231, 233, 218);
+}
+.ExtLinkButton {
+    width: 100%;
+    margin-bottom: 5px !important;
+}
+
+.ControlPanel {
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    padding: 3px;
+}
+
+.ControlPanelForm {
+    height: 100%;
+}
+.ui.green.button.AboutButton {
+    width: 100%;
+    line-height: 0.2em;
+    bottom: 0;
+    position: absolute;
+    margin-bottom: 0px !important;
+    margin-top: 5px !important;
+}
+.ui.green.button.ActionButton {
+    width: 100%;
+    margin-bottom: 5px !important;
+}
+.AboutWindow {
+}
+
+.CoordInputWindowTextarea {
+    width: 100%;
+    height: 6em;
+}
+
+.CoordInputWindowCoords {
+    width: 100%;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.CoordInputWindowParsingInfo {
+    width: 100%;
+    margin: 5px;
+    color: red;
+    height: 3em;
+    text-align: center;
+    white-space: pre;
+}
+
+.CoordInputWindowCoordsLine {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.CoordInputWindowCoordsItem, .CoordInputWindowCoordsItemHeader {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.CoordInputWindowCoordsItemHeader {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.CoordInputWindowMap {
+    width: 100%;
+    height: 150px;
+    position: relative;
+}
+
+.CoordInputWindowNoMap {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    background-color: #aaa;
+}
+body {
+    background: linear-gradient(#ffffff, #f0f0f6);
+}
+ 
+
+/*# sourceMappingURL=webgeo.cb5e6b63.css.map */
