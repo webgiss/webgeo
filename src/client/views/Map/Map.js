@@ -70,8 +70,6 @@ const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, geohash, onC
         return <div className='map'>
             <LeafMap
                 center={position}
-                maxZoom={25}
-                maxNativeZoom={maxZoom}
                 zoom={zoom}
                 ref={mapRef}
                 onMoveEnd={onMoveEnd}
@@ -81,6 +79,8 @@ const Map = ({ lat, lon, nlat, nlon, latText, lonText, zoom, style, geohash, onC
                 <TileLayer
                     attribution={attribution}
                     url={url}
+                    maxZoom={25}
+                    maxNativeZoom={maxZoom}
                 />
                 {
                     addrcoord ?
