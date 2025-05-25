@@ -1,0 +1,17 @@
+.map {
+    position: absolute;
+    left: 150px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+}
+
+.MapAddress {
+    margin-top: 5px;
+    white-space: pre;
+}

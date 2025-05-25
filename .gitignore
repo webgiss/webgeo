@@ -5,3 +5,4 @@
 /.vscode/settings.json
 debug.log
 /yarn-error.log
+*storybook.log
