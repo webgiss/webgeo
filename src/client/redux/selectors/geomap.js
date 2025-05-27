@@ -1,7 +1,5 @@
 import { useSelector } from "react-redux";
 
-export const usePagename = (slot) => useSelector((state) => (state.pages.bySlot[slot] !== null) && state.pages.allDocuments[state.pages.bySlot[slot]].name)
-
 export const useAboutWindowOpened = () => useSelector((state) => state.geomap.aboutWindowOpened)
 
 export const useLat = () => useSelector((state) => state.geomap.lat)

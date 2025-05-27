@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { actions } from '../../redux/slices/index'
+import { actions } from '@/redux/slices'
 
 const LocationListener = () => {
   const location = useLocation()

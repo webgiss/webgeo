@@ -1,8 +1,7 @@
 import React from 'react'
-import createComponent from '../helper/createComponent.jsx'
+import createComponent from '@/tools/components/createComponent';
 import './Title.css'
-import { useDispatch } from 'react-redux'
-import { useAddress, useLatText, useLonText, useNLat, useNLon } from '../../redux/selectors/geomap.js'
+import { useAddress, useLatText, useLonText, useNLat, useNLon } from '@/redux/selectors/geomap.js'
 
 import { Helmet } from 'react-helmet';
 

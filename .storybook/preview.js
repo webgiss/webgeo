@@ -1,5 +1,8 @@
+import { withRedux } from './withReduxDecorator'
+
 /** @type { import('@storybook/react').Preview } */
 const preview = {
+  decorators: [withRedux],
   parameters: {
     controls: {
       matchers: {

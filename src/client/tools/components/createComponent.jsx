@@ -8,13 +8,14 @@ import { handleError } from './handleError';
  * @returns {React.Component} The component object created
  */
 const createComponent = (code) => {
-    const filename = new Error().stack.split('\n')[2].trim().split(' ').pop().split('/').pop();
-
+    const componentName = new Error().stack.split(/[\n,]/)[1].trim().split(' ').pop().split('/').slice(-2,-1)[0]
+console.log(`Creating component: [${componentName}]`);
     const Component = (variables) => {
-        return handleError(filename, variables, () => {
+        return handleError(componentName, variables, () => {
             return code(variables);
         })
     }
+    Component.displayName = componentName;
     return Component;
 }
 

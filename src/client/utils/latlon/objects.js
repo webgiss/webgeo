@@ -1,4 +1,4 @@
-import Geohash from '../Geohash'
+import Geohash from '../Geohash.js'
 
 export const createEFloat = (data) => parseFloat(data)
 

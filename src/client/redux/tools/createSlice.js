@@ -40,5 +40,9 @@ export function createSlice(sliceStruct) {
   }
   // #endregion
 
+  // #region Original structure (for testing purposes)
+  slice.sliceStruct = sliceStruct
+  // #endregion
+
   return slice
 }

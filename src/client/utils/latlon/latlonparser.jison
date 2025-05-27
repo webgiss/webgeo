@@ -1,27 +1,5 @@
 %{
-    let createEFloat = null
-    let createFFloat = null
-    let createInteger = null
-    let createDegree = null
-    let createMinute = null
-    let createSecond = null
-    let createLat = null
-    let createLon = null
-    let createCoord = null
-    let createGeohash = null
-    let modulePromise = import('./objects.js')
-    modulePromise.then((module) => {
-        createEFloat = module.createEFloat
-        createFFloat = module.createFFloat
-        createInteger = module.createInteger
-        createDegree = module.createDegree
-        createMinute = module.createMinute
-        createSecond = module.createSecond
-        createLat = module.createLat
-        createLon = module.createLon
-        createCoord = module.createCoord
-        createGeohash = module.createGeohash
-    })
+// const {createEFloat, createFFloat, createInteger, createDegree, createMinute, createSecond, createLat, createLon, createCoord, createGeohash } = require('./objects.cjs');
 %}
 
 %lex

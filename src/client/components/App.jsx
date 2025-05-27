@@ -1,11 +1,12 @@
 import { history } from '../history'
 import { unstable_HistoryRouter as HistoryRouter, Route, Routes } from 'react-router-dom'
-import MainPage from './MainPage'
-import LocationListener from './Routes/LocationListener'
+import 'semantic-ui-css/semantic.min.css'
+import MainPage from '@/components/MainPage'
+import LocationListener from '@/components/Routes/LocationListener'
 
 export default () => {
     return (
-        <HistoryRouter history={history}>
+        <HistoryRouter future={{v7_startTransition: true, v7_relativeSplatPath: true}} history={history}>
             <LocationListener />
             <Routes>
                 <Route path='/' element={<MainPage />} />

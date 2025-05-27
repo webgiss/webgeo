@@ -1,12 +1,12 @@
 import React from 'react'
-import createComponent from '../helper/createComponent.jsx'
+import createComponent from '@/tools/components/createComponent';
 import './CoordInputWindow.css'
 import { Button, Modal } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux'
-import { actions } from '../../redux/slices/index.js'
-import { useInputCoord, useInputCoordParsed, useInputCoordParsedError, useInputCoordWindowOpened, useInputCoordZoom } from '../../redux/selectors/geomap.js'
+import { actions } from '@/redux/slices'
+import { useInputCoord, useInputCoordParsed, useInputCoordParsedError, useInputCoordWindowOpened, useInputCoordZoom } from '@/redux/selectors/geomap.js'
 import { Map as LeafMap, TileLayer } from 'react-leaflet';
-import { getMapInfo } from '../../utils/mapData';
+import { getMapInfo } from '@/utils/mapData';
 
 export default createComponent(() => {
     const dispatch = useDispatch()

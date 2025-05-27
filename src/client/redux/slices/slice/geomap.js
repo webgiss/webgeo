@@ -1,30 +1,10 @@
-import { URL_FORMAT, URL_GEOHASH, URL_GOOGLE, URL_HUMAN, URL_MAP, URL_STYLE, URL_ZOOM } from "../../../utils/urlConstants";
-import { parseLatLon } from "../../../utils/latlon"
-import Geohash from "../../../utils/Geohash";
-import { createSlice } from "../../tools/createSlice";
+import { URL_FORMAT, URL_GEOHASH, URL_GOOGLE, URL_HUMAN, URL_MAP, URL_STYLE, URL_ZOOM } from "@/utils/urlConstants";
+import { parseLatLon } from "@/utils/latlon"
+import Geohash from "@/utils/Geohash"
+import { createSlice } from "@/redux/tools/createSlice";
+import { getLatLonTextCan, normalizeLatLon } from "@/utils/geomap";
 
 const markResolution = 1000;
-
-const getPaddedNumber = data => `${data}`.padStart(2, '0')
-
-const getLatLonTextCan = (value, directionArray) => {
-    let indexSign = 0
-    if (value < 0) {
-        indexSign = 1
-        value = -value
-    }
-    let valueDeg = Math.floor(value)
-    value = (value - valueDeg) * 60
-    let valueMin = Math.floor(value)
-    value = (value - valueMin) * 60
-    let valueSec = Math.floor(value * 100) / 100
-    return {
-        text: `${valueDeg}° ${valueMin}' ${valueSec}" ${directionArray[indexSign]}`,
-        can: `${getPaddedNumber(valueDeg)}:${getPaddedNumber(valueMin)}:${getPaddedNumber(valueSec)}${directionArray[indexSign]}`,
-    }
-}
-
-const normalizeLatLon = (x) => Math.floor(x * 1000000) / 1000000;
 
 const updateAddress = (state, lat, lon, address, addrcoord) => {
     if (address) {
@@ -41,7 +21,8 @@ const updateAddress = (state, lat, lon, address, addrcoord) => {
                 }
             })
         } else {
-            state.addresses.push({ lat, lon, address, addrcoord })
+            console.log('updateAddress', { lat, lon, address, addrcoord, adresses: state.addresses})
+            // state.addresses.push({ lat, lon, address, addrcoord })
             if (state.addresses.length > 10) {
                 state.addresses = state.addresses.slice(state.addresses.length - 10, state.addresses.length)
             }
@@ -144,7 +125,6 @@ export const createLocationChangeReducer = (state, action) => (pathReducersByPar
         }
     }
 }
-
 
 const slice = createSlice({
     name: "geomap",

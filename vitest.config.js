@@ -1,5 +1,6 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 
 import { defineConfig } from 'vitest/config';
 
@@ -10,6 +11,11 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/writing-tests/test-addon
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src', 'client'),
+    },
+  },
   test: {
     workspace: [
       {
@@ -22,11 +28,11 @@ export default defineConfig({
         test: {
           name: 'storybook',
           browser: {
-        enabled: true,
-        headless: true,
-        name: 'chromium',
-        provider: 'playwright'
-      },
+            enabled: true,
+            headless: true,
+            name: 'chromium',
+            provider: 'playwright'
+          },
           setupFiles: ['.storybook/vitest.setup.js'],
         },
       },

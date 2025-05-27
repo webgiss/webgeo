@@ -1,18 +1,15 @@
 import React from 'react'
-import createComponent from '../helper/createComponent.jsx'
+import createComponent from '@/tools/components/createComponent';
 import './AboutButton.css'
 import { Button } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux'
-import { actions } from '../../redux/slices/index.js'
+import { actions } from '@/redux/slices'
+import { getOnClick } from '@/tools/components/helper';
 
 export default createComponent(({ text }) => {
     const dispatch = useDispatch()
 
-    const onClick = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        dispatch(actions.geomap.openAboutWindow())
-    }
+    const onClick = getOnClick(dispatch, actions.geomap.openAboutWindow);
 
-    return <Button color='green' className='AboutButton' as='a' href='#' onClick={onClick}>{text}</Button>
+    return <Button color='green' className='AboutButton' as='a' onClick={onClick}>{text}</Button>
 })

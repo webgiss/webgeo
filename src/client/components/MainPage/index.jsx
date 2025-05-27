@@ -1,11 +1,11 @@
 import React from 'react';
-import createComponent from '../helper/createComponent';
+import createComponent from '@/tools/components/createComponent';
 import './MainPage.css'
-import Map from '../../components/Map'
-import Title from '../../components/Title'
-import ControlPanel from '../../components/ControlPanel'
-import AboutWindow from '../../components/AboutWindow'
-import CoordInputWindow from '../../components/CoordInputWindow'
+import Map from '@/components/Map'
+import Title from '@/components/Title'
+import ControlPanel from '@/components/ControlPanel'
+import AboutWindow from '@/components/AboutWindow'
+import CoordInputWindow from '@/components/CoordInputWindow'
 import { Helmet } from 'react-helmet';
 
 export default createComponent(() => {

@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { reducer, slices, actions } from './slices'
+import { reducer, slices, actions } from '@/redux/slices'
 import { createListenerMiddleware } from '@reduxjs/toolkit';
 
 import { to_export_on_debug, _set_debug, get_debug, export_on_window, on_debug } from '../tools/debug';
-import addressUpdater from '../redux/middlewares/addressUpdater';
-import hashUpdater from '../redux/middlewares/hashUpdater';
+import addressUpdater from '@/redux/middlewares/addressUpdater';
+import hashUpdater from '@/redux/middlewares/hashUpdater';
 
 const new_reducer = {
   _debug: function reducer(state, action) {

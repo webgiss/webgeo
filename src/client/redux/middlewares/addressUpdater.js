@@ -1,5 +1,5 @@
 import { createListenerMiddleware } from '@reduxjs/toolkit'
-import { actions } from '../slices/index'
+import { actions } from '@/redux/slices'
 
 const addressUpdater = createListenerMiddleware()
 

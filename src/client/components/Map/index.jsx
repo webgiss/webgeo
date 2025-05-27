@@ -1,13 +1,13 @@
 import React, { createRef } from 'react';
-import createComponent from '../helper/createComponent.jsx'
+import createComponent from '@/tools/components/createComponent';
 import './Map.css'
 
 import { Map as LeafMap, TileLayer, Marker, Popup, Circle } from 'react-leaflet';
-import { getMapInfo } from '../../utils/mapData';
+import { getMapInfo } from '@/utils/mapData';
 
-import { actions } from '../../redux/slices/index'
+import { actions } from '@/redux/slices'
 import { useDispatch } from 'react-redux'
-import { useAddrcoord, useAddress, useGeohash, useLat, useLatText, useLon, useLonText, useMarks, useNLat, useNLon, useStyle, useUseMilliGraticule, useZoom } from '../../redux/selectors/geomap';
+import { useAddrcoord, useAddress, useGeohash, useLat, useLatText, useLon, useLonText, useMarks, useNLat, useNLon, useStyle, useUseMilliGraticule, useZoom } from '@/redux/selectors/geomap';
 
 const lastImpose = {
     lat: null,

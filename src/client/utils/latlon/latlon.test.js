@@ -1,6 +1,6 @@
 import { parseLatLon, OK, SYNTAX_ERROR } from ".";
 
-describe('parseLatLon', () => {
+describe.only('parseLatLon', () => {
     const testDataSet = [
         { data: '', expected: { parsed: false, error: false, status: OK } },
         { data: '    ', expected: { parsed: false, error: false, status: OK } },

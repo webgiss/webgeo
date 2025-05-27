@@ -1,5 +1,5 @@
 import React from 'react'
-import createComponent from '../helper/createComponent.jsx'
+import createComponent from '@/tools/components/createComponent';
 import './ExtLinkButton.css'
 import { Button } from 'semantic-ui-react'
 

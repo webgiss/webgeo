@@ -1,20 +1,23 @@
 import { defineConfig } from 'vite'
+import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react'
+// import commonjs from '@rollup/plugin-commonjs'
 
 export default defineConfig({
     plugins: [react()],
     build: {
         outDir: 'dist',
     },
+    resolve: {
+        alias: {
+            '@': resolve(__dirname, 'src', 'client'),
+        },
+    },
     server: {
         watch: {
             // Watch for changes in .jsx files
             ignored: [],
         },
-    },
-    test: {
-        globals: true,
-        environment: 'jsdom',
     },
     define: {
         // By default, Vite doesn't include shims for NodeJS/

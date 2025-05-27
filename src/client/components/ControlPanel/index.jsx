@@ -1,14 +1,15 @@
 import React from 'react'
-import createComponent from '../helper/createComponent.jsx'
+import createComponent from '@/tools/components/createComponent';
 import './ControlPanel.css'
 import { Form, TextArea } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux'
-import { actions } from '../../redux/slices/index.js'
-import { useGeohash, useLat, useLatText, useLon, useLonText, useZoom } from '../../redux/selectors/geomap.js'
-import MapStyleSelector from '../MapStyleSelector/index.jsx'
-import ActionButton from '../ActionButton/index.jsx'
-import ExtLinkButton from '../ExtLinkButton/index.jsx'
-import AboutButton from '../AboutButton/index.jsx'
+import { actions } from '@/redux/slices'
+import { useGeohash, useLat, useLatText, useLon, useLonText, useZoom } from '@/redux/selectors/geomap.js'
+import MapStyleSelector from '@/components/MapStyleSelector'
+import ActionButton from '@/components/ActionButton'
+import ExtLinkButton from '@/components/ExtLinkButton'
+import AboutButton from '@/components/AboutButton'
+import { getOnClick } from '@/tools/components/helper';
 
 export default createComponent(() => {
     const dispatch = useDispatch()
@@ -20,7 +21,7 @@ export default createComponent(() => {
     const zoom = useZoom()
     const geohash = useGeohash()
 
-    const onInputCoord = () => dispatch(actions.geomap.openInputCoordWindow())
+    const onInputCoord = getOnClick(dispatch, actions.geomap.openInputCoordWindow)
 
     return (
         <div className='ControlPanel'>

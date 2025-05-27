@@ -1,10 +1,10 @@
 import React from 'react'
-import createComponent from '../helper/createComponent.jsx'
+import createComponent from '@/tools/components/createComponent';
 import { Dropdown } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux'
-import { actions } from '../../redux/slices/index.js'
-import { useStyle } from '../../redux/selectors/geomap.js'
-import { getStyleNames } from '../../utils/mapData';
+import { actions } from '@/redux/slices'
+import { useStyle } from '@/redux/selectors/geomap.js'
+import { getStyleNames } from '@/utils/mapData';
 
 export default createComponent(() => {
     const dispatch = useDispatch()

@@ -1,6 +1,6 @@
 import { createListenerMiddleware } from '@reduxjs/toolkit'
-import { history } from '../../history';
-import { URL_GEOHASH, URL_GOOGLE, URL_HUMAN, URL_MAP, URL_STYLE, URL_ZOOM } from '../../utils/urlConstants';
+import { history } from '@/history';
+import { URL_GEOHASH, URL_GOOGLE, URL_HUMAN, URL_MAP, URL_STYLE, URL_ZOOM } from '@/utils/urlConstants';
 
 const getPath = (geomap) => {
     // console.log({ geomap })

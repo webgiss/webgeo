@@ -1,21 +1,18 @@
 import React from 'react'
-import createComponent from '../helper/createComponent.jsx'
+import createComponent from '@/tools/components/createComponent';
 import './AboutWindow.css'
 import { Button, Header, Modal } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux'
-import { actions } from '../../redux/slices/index.js'
-import { useAboutWindowOpened } from '../../redux/selectors/geomap.js'
+import { actions } from '@/redux/slices'
+import { useAboutWindowOpened } from '@/redux/selectors/geomap'
+import { getOnClick } from '@/tools/components/helper';
 
 export default createComponent(() => {
     const dispatch = useDispatch()
 
     const open = useAboutWindowOpened()
 
-    const onClose = (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        dispatch(actions.geomap.closeAboutWindow())
-    }
+    const onClose = getOnClick(dispatch, actions.geomap.closeAboutWindow)
 
     return (
         <Modal
