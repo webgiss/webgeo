@@ -29,7 +29,7 @@ jobs:
         run: |
             cp res/*.png res/*.ico dist/
             touch dist/.nojekyll
-            sed -i -E -e 's/(href|src)="(\/[^\/])/\1=".\2/g; s/<base href="[^"]*">/<base href="\/webgeo\/">/' dist/index.html
+            sed -i -E -e 's/(href|src)="(\/[^\/])/\1=".\2/g; s/<base href="[^"]*"/<base href="\/webgeo\/"/' dist/index.html
 
       - name: Deploy to GitHub Pages
         if: success()
