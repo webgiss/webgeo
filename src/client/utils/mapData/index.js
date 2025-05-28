@@ -1,5 +1,7 @@
 import data from './data'
 
+const mapData = data
+
 const getRightLink = (rights) => `<a href="${rights.url}">${rights.name}</a>`
 
 const getMapInfo = (style) => {

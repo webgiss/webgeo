@@ -1,7 +1,9 @@
 /.parcel-cache
 /node_modules
 /dist
+/html
 /.local
 /.vscode/settings.json
 debug.log
 /yarn-error.log
+*storybook.log

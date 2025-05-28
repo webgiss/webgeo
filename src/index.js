@@ -1,3 +1,3 @@
-import 'regenerator-runtime/runtime.js';
-import './client/index'
+import init from './client/reactredux'
 
+init()

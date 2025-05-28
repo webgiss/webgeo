@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
+      - name: Use Node.js 22.x
+        uses: actions/setup-node@v4
         with:
-          node-version: 14.x
+          node-version: 22.x
 
       - name: Use yarn
         run: yarn
@@ -22,7 +22,7 @@ jobs:
         run: yarn build
 
       - name: Run tests with yarn
-        run: yarn test
+        run: yarn test --run
 
       - name: Create dist
         if: success()
@@ -33,7 +33,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         if: success()
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: crazy-max/ghaction-github-pages@v4
         with:
           target_branch: gh-pages
           build_dir: dist

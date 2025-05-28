@@ -1,4 +1,4 @@
-const { default: Geohash } = require("./Geohash");
+import Geohash from "./Geohash.js";
 
 describe(`Geohash`, () => {
     [
