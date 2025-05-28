@@ -19,7 +19,7 @@ jobs:
         run: yarn
 
       - name: Build with yarn
-        run: yarn build
+        run: yarn build --mode ghp
 
       - name: Run tests with yarn
         run: yarn test --run
@@ -29,7 +29,6 @@ jobs:
         run: |
             cp res/*.png res/*.ico dist/
             touch dist/.nojekyll
-            sed -i -E -e 's/(href|src)="(\/[^\/])/\1=".\2/g; s/<base href="[^"]*"/<base href="\/webgeo\/"/' dist/index.html
 
       - name: Deploy to GitHub Pages
         if: success()
