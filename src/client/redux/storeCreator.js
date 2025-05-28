@@ -11,7 +11,7 @@ const new_reducer = {
   ...reducer
 }
 
-const storeCreator = (enhancer) => {
+const storeCreator = ({enhancer, preloadedState}) => {
     const storeConfig = {
       reducer: new_reducer,
       middleware: (getDefaultMiddleware) => {
@@ -19,6 +19,7 @@ const storeCreator = (enhancer) => {
           .prepend(addressUpdater.middleware)
           .prepend(hashUpdater.middleware)
       },
+      preloadedState
     }
     if (enhancer) {
       storeConfig.enhancers = (getDefaultEnhancers) => getDefaultEnhancers().concat(enhancer);

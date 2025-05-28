@@ -15,14 +15,12 @@ const updateAddress = (state, lat, lon, address, addrcoord) => {
 
         let matchAddresses = state.addresses.filter((ad) => (ad.lat === lat) && (ad.lon === lon))
         if (matchAddresses.length >= 1) {
-            state.addresses = state.addresses.map((ad) => {
-                if ((ad.lat === lat) && (ad.lon === lon)) {
-                    return { lat, lon, address }
-                }
+            matchAddresses.forEach((ad) => {
+                ad.address = address
+                ad.addrcoord = addrcoord
             })
         } else {
-            console.log('updateAddress', { lat, lon, address, addrcoord, adresses: state.addresses})
-            // state.addresses.push({ lat, lon, address, addrcoord })
+            state.addresses.push({ lat, lon, address, addrcoord })
             if (state.addresses.length > 10) {
                 state.addresses = state.addresses.slice(state.addresses.length - 10, state.addresses.length)
             }
@@ -300,7 +298,7 @@ const slice = createSlice({
                         const [lon, lat] = feature.geometry.coordinates;
                         addrcoord = [lat, lon]
                     }
-                    const address = result.features.map(f => `${f.properties.label} (${Math.round(10000 * f.properties.score) / 100} %)`).join('\n');
+                    const address = result.features.map(f => `${f.properties.label} (${Math.round(10000 * f.properties.score) / 100} %)`).slice(0,5).join('\n');
                     return { lat, lon, address, addrcoord };
                 }
 

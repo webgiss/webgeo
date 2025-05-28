@@ -1,10 +1,8 @@
 import React from 'react';
-import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux';
-// import { enhancer } from "storybook-addon-redux-store";
 
 import storeCreator from '@/redux/storeCreator';
-import { reducer, slices } from '@/redux/slices';
+import { slices } from '@/redux/slices';
 
 export const withRedux = (Story) => {
     const store = storeCreator()
@@ -25,10 +23,7 @@ export const withReduxState = (patchState) => (Story) => {
             }
             return [slice.name, subState]
         }))
-    const store = configureStore({
-        reducer,
-        preloadedState,
-    });
+    const store = storeCreator({preloadedState})
 
     return (
         <Provider store={store}>
