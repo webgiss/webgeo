@@ -1,13 +1,14 @@
 import { fn } from '@storybook/test';
 
 import ActionButton from './index';
+import { withReduxState } from '@/tools/components/storybook/withReduxDecorator';
 
 export default {
-    title: 'App/ActionButton',
+    title: 'Component/ActionButton',
     component: ActionButton,
-    parameters: {
-    },
+    decorators: [withReduxState({})],
     tags: ['autodocs'],
+    parameters: {},
     args: {
         text: 'Action',
         onClick: fn(),

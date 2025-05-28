@@ -148,6 +148,9 @@ const slice = createSlice({
         inputCoordZoom: 14,
     },
     reducers: {
+        init(state) {
+            impactLatLonChange(state)
+        },
         setCoord(state, action) {
             const { lat, lon } = action.payload
             state.lat = lat

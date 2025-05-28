@@ -1,13 +1,16 @@
-import { withRedux } from './withReduxDecorator'
+import 'semantic-ui-css/semantic.min.css'
+// import { withRedux } from '@/tools/components/storybook/withReduxDecorator'
+// import store from '@/tools/components/storybook/store';
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
-  decorators: [withRedux],
+  // decorators: [withRedux],
+  decorators: [],
   parameters: {
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
   },

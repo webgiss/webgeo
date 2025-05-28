@@ -1,19 +1,32 @@
 import { fn } from '@storybook/test';
+import { withReduxState } from '@/tools/components/storybook/withReduxDecorator'
 
 import AboutWindow from './index';
 
 export default {
-    title: 'App/AboutWindow',
-    name: 'AboutWindow',
+    title: 'Popup/AboutWindow',
     component: AboutWindow,
-    parameters: {
-    },
-    tags: ['autodocs'],
-    args: {
-    },
+    parameters: {},
+    args: {},
 };
 
-export const About = {
+export const Opened = {
+    decorators: [withReduxState({
+        geomap: {
+            aboutWindowOpened: true,
+        },
+    })],
     args: {
     },
-};
+}
+
+export const Closed = {
+    decorators: [withReduxState({
+        geomap: {
+            aboutWindowOpened: false,
+        },
+    })],
+    args: {
+    },
+}
+

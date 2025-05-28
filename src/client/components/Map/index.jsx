@@ -78,7 +78,6 @@ export default createComponent(() => {
         const onClick = (e) => {
             const map = mapRef.current;
             if (map) {
-                map.leafletElement.locate()
                 if (onCenter) {
                     onCenter(e.latlng.lat, e.latlng.lng)
                 }

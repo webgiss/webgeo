@@ -1,6 +1,7 @@
-import { actions } from "@/redux/slices";
+import { actions, slices } from "@/redux/slices";
+import { init_debug } from "@/tools/debug";
 
 export const init = (store) => {
-  debug()
-  store.dispatch(actions.geomap.setCoord({lat: 48.87,lon:2.33}));
+  init_debug(store, actions, slices);
+  store.dispatch(actions.geomap.init());
 }
