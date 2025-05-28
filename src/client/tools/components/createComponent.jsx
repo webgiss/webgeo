@@ -9,7 +9,7 @@ import { handleError } from './handleError';
  */
 const createComponent = (code) => {
     const componentName = new Error().stack.split(/[\n,]/)[1].trim().split(' ').pop().split('/').slice(-2,-1)[0]
-console.log(`Creating component: [${componentName}]`);
+    // console.log(`Creating component: [${componentName}]`);
     const Component = (variables) => {
         return handleError(componentName, variables, () => {
             return code(variables);

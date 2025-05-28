@@ -14,7 +14,7 @@ export const withRedux = (Story) => {
 }
 
 export const withReduxState = (patchState) => (Story) => {
-    console.log({ patchState, slices });
+    // console.log({ patchState, slices });
     const preloadedState = Object.fromEntries(
         Object.values(slices).map(slice => {
             const subState = slice.getInitialState();

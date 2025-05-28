@@ -11,7 +11,8 @@ const new_reducer = {
   ...reducer
 }
 
-const storeCreator = ({enhancer, preloadedState}) => {
+const storeCreator = (args) => {
+    const { enhancer, preloadedState } = args || {};
     const storeConfig = {
       reducer: new_reducer,
       middleware: (getDefaultMiddleware) => {

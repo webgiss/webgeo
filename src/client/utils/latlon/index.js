@@ -8,7 +8,7 @@ export const SYNTAX_ERROR='SYNTAX_ERROR'
  * @param {String} data text description of lat and lon
  */
 export const parseLatLon = (data) => {
-    console.log('parseLatLon', {data})
+    // console.log('parseLatLon', {data})
     const get_result = (lat, lon) => ({ parsed: true, error: false, status: OK, lat, lon })
     const get_fail = (error, status, message) => ({ parsed: false, error, status, message })
     const get_error = (status, message) => get_fail(true, status, message)
