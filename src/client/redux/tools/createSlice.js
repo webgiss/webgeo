@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { createSlice as createSliceRedux  } from '@reduxjs/toolkit';
+import { createSlice as createSliceRedux } from '@reduxjs/toolkit';
 
 export function createSlice(sliceStruct) {
-  const { name : sliceName, extraReducers, asyncReducers } = sliceStruct;
+  const { name: sliceName, extraReducers, asyncReducers } = sliceStruct;
 
   // #region handling extraReducers
   const asyncFunctions = {}
@@ -10,23 +10,25 @@ export function createSlice(sliceStruct) {
 
   const addReducerFunction = (type, reducer) => {
     if (reducer !== undefined || reducer !== null) {
-      extraReducersFunctions.push({type, reducer})
+      extraReducersFunctions.push({ type, reducer })
     }
   }
 
-  for(const [name, [asyncFunctionBase, pendingReducer, fulfilledReducer, rejectedReducer]] of Object.entries(asyncReducers)) {
-    const fullName = `${sliceName}/${name}`
+  if (asyncReducers) {
+    for (const [name, [asyncFunctionBase, pendingReducer, fulfilledReducer, rejectedReducer]] of Object.entries(asyncReducers)) {
+      const fullName = `${sliceName}/${name}`
 
-    const asyncFunction = createAsyncThunk(fullName, asyncFunctionBase)
-    addReducerFunction(asyncFunction.pending, pendingReducer)
-    addReducerFunction(asyncFunction.fulfilled, fulfilledReducer)
-    addReducerFunction(asyncFunction.rejected, rejectedReducer)
-    asyncFunctions[name] = asyncFunction
+      const asyncFunction = createAsyncThunk(fullName, asyncFunctionBase)
+      addReducerFunction(asyncFunction.pending, pendingReducer)
+      addReducerFunction(asyncFunction.fulfilled, fulfilledReducer)
+      addReducerFunction(asyncFunction.rejected, rejectedReducer)
+      asyncFunctions[name] = asyncFunction
+    }
   }
-
+  
   sliceStruct.extraReducers = (builder) => {
     extraReducers !== undefined && extraReducers(builder)
-    extraReducersFunctions.forEach(({type, reducer}) => {
+    extraReducersFunctions.forEach(({ type, reducer }) => {
       builder.addCase(type, reducer)
     })
   }
