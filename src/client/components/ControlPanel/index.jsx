@@ -51,6 +51,7 @@ export default createComponent(() => {
                 <ExtLinkButton text='Windy' url={`https://www.windy.com/${lat}/${lon}?pressure,${lat},${lon},${zoom}`} />
                 <ExtLinkButton text='nullschool' url={`https://earth.nullschool.net/#current/wind/surface/level/orthographic=${lon},${lat},4000/loc=${lon},${lat}`} />
                 <ExtLinkButton text='blitzortung' url={`https://map.blitzortung.org/#${zoom - 1}/${lat}/${lon}`} />
+                <ExtLinkButton text='WPlace' url={`https://wplace.live/?lat=${lat}&lng=${lon}&zoom=${zoom}`} />
                 <AboutButton text='About' />
             </Form>
         </div>
